@@ -68,6 +68,7 @@ int main(){
 
     printf("MASUKAN BANYAK DATA : ");
     scanf("%d", &banyak_data);
+    system("cls");
 
     printf("DATA AWAL : ");
     random_number(kumpulan, banyak_data);
