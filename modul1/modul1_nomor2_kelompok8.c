@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-int main()
-{
+
+
+void calculator(){
     float keliling, luas,lebar,panjang,tinggi,sisi,alas,volume,tinggi_prisma,a , b, c, d, d1, d2;
     float jari;
 	int choice;
-    penghitung_nilai:
 
-    printf("pilihlah salah satu bangun ruang berikut\n" );
+      printf("pilihlah salah satu bangun ruang berikut\n" );
 	  printf("1.  Segitiga sembarang\n");
 	  printf("2.  Belah Ketupat\n" );
 	  printf("3.  Jajar genjang\n" );
@@ -92,15 +92,25 @@ int main()
          printf("__________________________________________\n");
 	      }
 	printf("Selesai\n");
-	printf("__________________________________________\n");
+	printf("Terimakasih\n");
+		printf("__________________________________________\n");
+ 	ulang();
+}
+  
+  
+  void ulang (){
+	int choice;
 	printf("Apakah Anda Ingin Melanjutkan\n");
 	printf("Ketik 1 Untuk Melanjutkan\n");
 	printf("Ketik 2 Untuk Keluar\n");
 	scanf("%d", &choice);
-	if(choice ==1) goto penghitung_nilai;
-	else goto exit;
-	exit: 
-	printf("Terimakasih");
- 	return 0;
- 	
+    if(choice ==1) calculator();
+	else
+	 
+ 
   }
+  
+
+int main(){
+    calculator();
+}
