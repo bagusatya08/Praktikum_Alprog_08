@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#define _repeat do 
+#define _until(CONDITION) while (!(CONDITION)) 
 
 
-void calculator(){
+int main(){
     float keliling, luas,lebar,panjang,tinggi,sisi,alas,volume,tinggi_prisma,a , b, c, d, d1, d2;
     float jari;
-	int choice;
-
+	int choice, choice2;
+	
+	_repeat {
       printf("pilihlah salah satu bangun ruang berikut\n" );
 	  printf("1.  Segitiga sembarang\n");
 	  printf("2.  Belah Ketupat\n" );
@@ -16,8 +19,7 @@ void calculator(){
 	  printf("5.  Lingkaran\n"         );
 	  printf("Masukan Pilihan Anda: ");
 	  scanf("%d",&choice);
-    switch(choice)
-	      {
+    switch(choice) {
 	      case 1:
 	        printf("Anda telah memilih Segitiga sembarang \n");
 	        printf("Masukan ukuran sisi A Segitiga sembarang : ");
@@ -86,31 +88,20 @@ void calculator(){
 	       	printf("keliling lingkaran adalah %.0f\n",keliling);
 	       	printf("Luas lingkaran adalah %.0f\n",luas);
 	      default:
-         printf("__________________________________________\n");
-         printf("Maaf, pilihan anda salah\n");
-         printf("input yang anda masukan salah\n");
-         printf("__________________________________________\n");
-	      }
+            printf("__________________________________________\n");
+            printf("Maaf, pilihan anda salah\n");
+            printf("input yang anda masukan salah\n");
+            printf("__________________________________________\n");
+	}
 	printf("Selesai\n");
 	printf("Terimakasih\n");
-		printf("__________________________________________\n");
- 	ulang();
-}
-  
-  
-  void ulang (){
-	int choice;
+	printf("__________________________________________\n");
 	printf("Apakah Anda Ingin Melanjutkan\n");
 	printf("Ketik 1 Untuk Melanjutkan\n");
 	printf("Ketik 2 Untuk Keluar\n");
-	scanf("%d", &choice);
-    if(choice ==1) calculator();
-	else
-	 
- 
-  }
-  
-
-int main(){
-    calculator();
+	scanf("%d", &choice2);
+	}
+	_until (choice2 ==2);
+	printf("Terimakasih telah menggunakan program ini\n");
+	return(0);
 }
