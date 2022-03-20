@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-int main()
-{
+#define _repeat do 
+#define _until(CONDITION) while (!(CONDITION)) 
+
+int main(){
     float volume, luas,lebar,panjang,tinggi,sisi,tinggi_prisma;
     float jari;
-	  int choice;
-    penghitung_nilai:
-
+	int choice, choice2;
+	
+	_repeat {
     printf("pilihlah salah satu bangun ruang berikut\n" );
 	  printf("1.  Tabung\n");
 	  printf("2.  Bola\n" );
@@ -82,17 +84,16 @@ int main()
          printf("Maaf, pilihan anda salah\n");
          printf("input yang anda masukan salah\n");
          printf("__________________________________________\n");
-	      }
+	}
 	printf("Selesai\n");
+	printf("Terimakasih\n");
 	printf("__________________________________________\n");
 	printf("Apakah Anda Ingin Melanjutkan\n");
 	printf("Ketik 1 Untuk Melanjutkan\n");
 	printf("Ketik 2 Untuk Keluar\n");
-	scanf("%d", &choice);
-	if(choice ==1) goto penghitung_nilai;
-	else goto exit;
-	exit: 
-	printf("Terimakasih");
- 	return 0;
- 	
-  }
+	scanf("%d", &choice2);
+	}
+	_until (choice2 ==2);
+	printf("Terimakasih telah menggunakan program ini\n");
+	return(0);
+}
