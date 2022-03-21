@@ -1,6 +1,6 @@
 // Nama 	: Jesica Syalomitha Sule Ulang
 // NIM 		: 2105551043
-// Kelompok : 8
+// Kelompok 	: 8
 
 #include <stdio.h>
 #include <conio.h>
