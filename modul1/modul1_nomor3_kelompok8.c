@@ -10,6 +10,7 @@ int main(){
 	int choice, choice2;
 	
 	_repeat {
+	system("cls");
     printf("pilihlah salah satu bangun ruang berikut\n" );
 	  printf("1.  Tabung\n");
 	  printf("2.  Bola\n" );
@@ -85,10 +86,11 @@ int main(){
          printf("input yang anda masukan salah\n");
          printf("__________________________________________\n");
 	}
-	printf("Selesai\n");
-	printf("Terimakasih\n");
-	printf("__________________________________________\n");
-	printf("Apakah Anda Ingin Melanjutkan\n");
+	printf("__________________________________________\n\n");
+	printf("Program Selesai\n");
+	printf("\n+-----------------------------------------------------------------------------+");
+	printf("\n               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!             		");
+    printf("\n+-----------------------------------------------------------------------------+\n");
 	printf("Ketik 1 Untuk Melanjutkan\n");
 	printf("Ketik 2 Untuk Keluar\n");
 	scanf("%d", &choice2);
