@@ -1,268 +1,235 @@
-// Nama 	: Jesica Syalomitha Sule Ulang
-// NIM 		: 2105551043
-// Kelompok 	: 8
-
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
+#include <conio.h>
 
+void intro();
 void menu();
 void penjumlahan();
 void pengurangan();
 void perkalian();
 void pembagian();
 void modulus();
-void keluar();
+int validInt();
+void reVldInt();
+float validFlt();
+void reVldFlt();
+void rangeVldInt();
 
-float input_bilangan(){
-    float bilangan;
-    char huruf;
-    scanf("%f%c", &bilangan,&huruf);
-    if(huruf != '\n'){
-        printf("Masukkan salah, mohon masukkan ulang :");
-        fflush(stdin);
-        input_bilangan();
-    }
-	else{
-        return bilangan;
-    }
+int tryAgain(char y, char n, char *prompt){
+	char ext;
+	while(1){
+		printf(prompt);
+		fflush(stdin);
+		scanf("%c", &ext);
+		if((ext=='y' || ext=='Y') || (ext=='n' || ext=='N')){
+			if (ext == 'y' || ext == 'Y'){
+				system("cls");
+			}
+			break;
+		}else{
+		printf("\t\t\t\tInput salah! Silahkan coba lagi.\n");
+		}
+	}
+	if(ext=='n' || ext=='N') return 0;
+	return 1;
 }
 
-int inputBilangan(){
-    int bilangan;
-    char huruf;
-    scanf("%d%c", &bilangan,&huruf);
-    if(huruf != '\n' || bilangan<0){
-        printf("Masukkan salah, mohon masukkan ulang :");
-        fflush(stdin);
-        inputBilangan();
-    }
-	else{
-        return bilangan;
-    }
-}
 
 int main(){
-	menu();
-	system ("pause");
-	return 0;
+	system ("color E0");
+    int pilihan;
+
+    do{
+        //pemanggilan fungsi menu awal dan keterangan lainnya mengenai tugas
+        intro();
+        menu();
+
+        //mengambil masukkan menu dengan melakukan validasi terhadapt pilihan tersebut 1 - 5
+        rangeVldInt(&pilihan, "\n\t\t\t\tPilih menu : ");
+
+        //melakukan swicth case
+        switch(pilihan){
+            case 1:
+                penjumlahan();
+                break;
+            case 2:
+                pengurangan();
+                break;
+            case 3:
+                perkalian();
+                break;
+            case 4:
+                pembagian();
+                break;
+            case 5:
+                modulus();
+                break;
+        }
+
+    }while(tryAgain('y','n', "\n\t\t\t\tUlang Program? [Y/N] : "));
+    //akhir dari program saat user selesai menggunakan program ini
+    printf("\n\t\t\t\t==================================================\n");
+    printf("\t\t\t\t                 HAVE A BLESS DAY!");
+    printf("\n\t\t\t\t==================================================\n");
+
+    return 0;
+}
+
+void intro(){
+     printf("\n\t\t\t\t==================================================\n");
+     printf("\t\t\t\t||         PRAKTIKUM ALGORITMA PEMROGRAMAN      ||\n");
+     printf("\t\t\t\t||                   MODUL 1                    ||\n");
+     printf("\t\t\t\t--------------------------------------------------\n");
+     printf("\t\t\t\t||          Program Kalkulator Sederhana        ||\n");
+     printf("\t\t\t\t||                  Kelompok 8                  ||\n");
+     printf("\t\t\t\t==================================================\n\n");
 }
 
 void menu(){
-	int pilih;
-	system ("cls");
-	printf ("==========================================\n");
-	printf ("|     PROGRAM KALKULATOR      |\n");
-	printf ("==========================================\n");;
-	printf ("Menu:\n");
-	printf ("\t[1] Penjumlahan\n");
-	printf ("\t[2] Pengurangan\n");
-	printf ("\t[3] Perkalian\n");
-	printf ("\t[4] Pembagian\n");
-	printf ("\t[5] Modulus\n");
-	printf ("\t[6] Keluar\n");
-	printf ("\nPilih menu yang anda inginkan: ");
-	pilih = inputBilangan();
-	
-	switch (pilih){
-		case 1:
-		penjumlahan();
-		break;
-		case 2:
-		pengurangan();
-		break;
-		case 3:
-		perkalian();
-		break;
-		case 4:
-		pembagian();
-		break;
-		case 5:
-		modulus();
-		break;
-		case 6:
-		keluar();
-		break;
-		default:
-		printf ("Menu yang anda masukkan tidak tersedia, mohon masukkan ulang");
-		getch();
-		menu();
-		break;
-	}
+    printf("\t\t\t\tMenu :\n");
+    printf("\t\t\t\t1. Penjumlahan\n");
+    printf("\t\t\t\t2. Pengurangan\n");
+    printf("\t\t\t\t3. Perkalian\n");
+    printf("\t\t\t\t4. Pembagian\n");
+    printf("\t\t\t\t5. Modulus\n");
 }
 
 void penjumlahan(){
-	int pilih;
-	float angka1;
-	float angka2;
-	float hasil;
-	
-	system ("cls");
-	printf ("==========================================\n");
-	printf ("|             PENJUMLAHAN                |\n");
-	printf ("==========================================\n");
-	printf ("Masukkan bilangan pertama :");
-	angka1 = input_bilangan ();
-	printf ("Masukkan bilangan kedua   :");
-	angka2 = input_bilangan ();
-	
-	hasil = angka1 + angka2;
-	printf ("\nHasil penjumlahan bilangan adalah %.2f", hasil);
-	
-	printf ("\n[1] Lanjut");
-	printf ("\n[2] Kembali\n");
-	printf ("Apakah anda ingin lanjut? ");
-	pilih = inputBilangan();
-	
-	switch (pilih){
-		case 1:
-		penjumlahan();
-		case 2:
-		menu();
-		default:
-		printf ("Menu yang anda piliih tidak tersedia, mohon masukkan ulang\n");
-		break;
-	}
+    float hasil,bil1,bil2;
+
+    printf("\t\t\t\t-------------------------------\n");
+    printf("\t\t\t\t1. Penjumlahan :\n");
+
+    //memasukkan input yang akan dilakukan validasi
+    reVldFlt(&bil1, "\t\t\t\tMasukkan bilangan 1\t: ");
+    reVldFlt(&bil2, "\t\t\t\tMasukkan bilangan 2\t: ");
+
+    //hasil perhitungan
+    hasil = bil1 + bil2;
+    printf("\t\t\t\t------------------------------- +\n");
+    printf("\t\t\t\tHasil:\t\t\t  %.2f\n", hasil);
 }
 
 void pengurangan(){
-	int pilih;
-	float angka1;
-	float angka2;
-	float hasil;
-	system ("cls");
-	printf ("==========================================\n");
-	printf ("|             PENGURANGAN                |\n");
-	printf ("==========================================\n");
-	printf ("Masukkan bilangan pertama :");
-	angka1 = input_bilangan();
-	printf ("Masukkan bilangan kedua   :");
-	angka2 = input_bilangan();
-		
-	hasil = angka1 - angka2;
-	printf ("\nHasil pengurangan bilangan adalah %.2f", hasil);
-	
-	printf ("\n[1] Lanjut");
-	printf ("\n[2] Kembali\n");
-	printf ("Apakah anda ingin lanjut? ");
-	pilih = inputBilangan();
-	
-	switch (pilih){
-		case 1:
-		pengurangan();
-		case 2:
-		menu();
-		default:
-		printf ("Menu yang anda piliih tidak tersedia, mohon masukkan ulang\n");
-		break;
-	}
+    float hasil,bil1,bil2;
+
+    printf("\t\t\t\t-------------------------------\n");
+    printf("\t\t\t\t2. Pengurangan :\n");
+
+    //memasukkan input yang akan dilakukan validasi
+    reVldFlt(&bil1, "\t\t\t\tMasukkan bilangan 1\t: ");
+    reVldFlt(&bil2, "\t\t\t\tMasukkan bilangan 2\t: ");
+
+    //hasil perhitungan
+    hasil = bil1 - bil2;
+    printf("\t\t\t\t------------------------------- -\n");
+    printf("\t\t\t\tHasil:\t\t\t  %.2f\n", hasil);
 }
 
 void perkalian(){
-	int pilih;
-	float angka1;
-	float angka2;
-	float hasil;
-	system ("cls");
-	printf ("==========================================\n");
-	printf ("|               PERKALIAN                |\n");
-	printf ("==========================================\n");
-	printf ("Masukkan bilangan pertama :");
-	angka1 = input_bilangan();
-	printf ("Masukkan bilangan kedua   :");
-	angka2 = input_bilangan();
-	
-	hasil = angka1 * angka2;
-	printf ("\nHasil perkalian bilangan adalah %.2f", hasil);
-	
-	printf ("\n[1] Lanjut");
-	printf ("\n[2] Kembali\n");
-	printf ("Apakah anda ingin lanjut? ");
-	pilih = inputBilangan();
-	
-	switch (pilih){
-		case 1:
-		perkalian();
-		case 2:
-		menu();
-		default:
-		printf ("Menu yang anda piliih tidak tersedia, mohon masukkan ulang\n");
-		break;
-	}
+    float hasil,bil1,bil2;
+
+    printf("\t\t\t\t-------------------------------\n");
+    printf("\t\t\t\t3. Perkalian :\n");
+
+    //memasukkan input yang akan dilakukan validasi
+    reVldFlt(&bil1, "\t\t\t\tMasukkan bilangan 1\t: ");
+    reVldFlt(&bil2, "\t\t\t\tMasukkan bilangan 2\t: ");
+
+    //hasil perhitungan
+    hasil = bil1 * bil2;
+    printf("\t\t\t\t------------------------------- x\n");
+    printf("\t\t\t\tHasil:\t\t\t  %.2f\n", hasil);
 }
 
 void pembagian(){
-	int pilih;
-	float angka1;
-	float angka2;
-	float hasil;
-	system ("cls");
-	printf ("==========================================\n");
-	printf ("|               PEMBAGIAN                |\n");
-	printf ("==========================================\n");
-	printf ("Masukkan bilangan pertama :");
-	angka1 = input_bilangan();
-	printf ("Masukkan bilangan kedua   :");
-	angka2 = input_bilangan();
-	
-	hasil = angka1 / angka2;
-	printf ("\nHasil pembagian bilangan adalah %.2f", hasil);
-	
-	printf ("\n[1] Lanjut");
-	printf ("\n[2] Kembali\n");
-	printf ("Apakah anda ingin lanjut? ");
-	pilih = inputBilangan();
-	
-	switch (pilih){
-		case 1:
-		pembagian();
-		case 2:
-		menu();
-		default:
-		printf ("Menu yang anda piliih tidak tersedia, mohon masukkan ulang\n");
-		break;
-	}
+    float hasil,bil1,bil2;
+
+    printf("\t\t\t\t-------------------------------\n");
+    printf("\t\t\t\t4. Pembagian :\n");
+
+    //memasukkan input yang akan dilakukan validasi
+    reVldFlt(&bil1, "\t\t\t\tMasukkan bilangan 1\t: ");
+    reVldFlt(&bil2, "\t\t\t\tMasukkan bilangan 2\t: ");
+
+    //hasil perhitungan
+    hasil = bil1 / bil2;
+    printf("\t\t\t\t------------------------------- :\n");
+    if((bil2 == 0) || (bil1 == 0 && bil2 == 0)){
+        printf("\t\t\t\t Hasil tidak terdefinisikan");
+    }else{
+        printf("\t\t\t\tHasil:\t\t\t  %.2f\n", hasil);
+        }
 }
 
 void modulus(){
-	int pilih;
-	int angka1;
-	int angka2;
-	int hasil;
-	system ("cls");
-	printf ("==========================================\n");
-	printf ("|                 MODULUS                |\n");
-	printf ("==========================================\n");
-	printf ("Masukkan bilangan pertama :");
-	angka1 = inputBilangan();
-	printf ("Masukkan bilangan kedua   :");
-	angka2 = inputBilangan();
-	
-	hasil = fmod (angka1, angka2);
-	printf ("\nHasil modulus bilangan adalah %d", hasil);
-	
-	printf ("\n[1] Lanjut");
-	printf ("\n[2] Kembali\n");
-	printf ("Apakah anda ingin lanjut? ");
-	pilih = inputBilangan();
-	
-	switch (pilih){
-		case 1:
-		modulus();
-		case 2:
-		menu();
-		default:
-		printf ("Menu yang anda piliih tidak tersedia, mohon masukkan ulang\n");
-		break;
+    int hasil,bil1,bil2;
+
+    printf("\t\t\t\t-------------------------------\n");
+    printf("\t\t\t\t5. Modulus :\n");
+
+    //memasukkan input yang akan dilakukan validasi
+    reVldInt(&bil1, "\t\t\t\tMasukkan bilangan 1\t: ");
+    reVldInt(&bil2, "\t\t\t\tMasukkan bilangan 2\t: ");
+
+    //hasil perhitungan
+    printf("\t\t\t\t------------------------------- %\n");
+    if (bil2 == 0){
+            printf("\t\t\t\tHasil tidak terdefinisikan");
+    }else{
+        hasil = bil1 % bil2;
+        printf("\t\t\t\tHasil:\t\t\t  %d\n", hasil);
+        }
+}
+
+void rangeVldInt(int *var, char *prompt){
+	while(1){
+		reVldInt(var, prompt);
+		if(*var >= 1  && *var <= 5)
+			break;
+
+		printf("\t\t\t\tInput salah! Silahkan coba lagi.\n\n");
 	}
 }
 
-void keluar(){
-	system("cls");
-	printf("\n\n\n\n\n\n\n\n\n+-----------------------------------------------------------------------------+");
-	printf("\n|               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!             		|");
-    printf("\n+-----------------------------------------------------------------------------+");
-    printf("\n");
-    exit(0);
-	exit(0);
+int validInt(int *var){
+	char buff[1024];
+	char cek;
+	fflush(stdin);
+	if(fgets(buff, sizeof(buff), stdin) != NULL){
+		if(sscanf(buff, "%d %c", var, &cek) == 1) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+void reVldInt(int *var, char *prompt){
+	while(1){
+		printf(prompt);
+		if(validInt(var))
+			break;
+		printf("\t\t\t\tInput salah! Silahkan coba lagi.\n\n");
+	}
+}
+
+float validFlt(float *var){
+	char buff[1024];
+	char cek;
+	fflush(stdin);
+	if(fgets(buff, sizeof(buff), stdin) != NULL){
+		if(sscanf(buff, "%f %c", var, &cek) == 1) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+void reVldFlt(float *var, char *prompt){
+	while(1){
+		printf(prompt);
+		if(validFlt(var))
+			break;
+		printf("\t\t\t\tInput salah! Silahkan coba lagi.\n\n");
+	}
 }
