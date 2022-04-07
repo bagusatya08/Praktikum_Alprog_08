@@ -1,3 +1,8 @@
+
+// Nama 	: Jonathan Darren Vincentio
+// NIM 		: 2105551034
+// Kelompok 	: 8
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
