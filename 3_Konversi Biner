@@ -1,5 +1,10 @@
  #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
 
+ int validasiDesimal();
+ int validasiBiner();
+ void ulangi();
 
 int validasiDesimal(){
 	int nilai;
@@ -7,11 +12,11 @@ int validasiDesimal(){
 	
     if (scanf("%i%c", &nilai, &check) != 2 || check != '\n') {
     	fflush(stdin);
-		printf("\nNilai yang anda masukan tidak valid!\nMasukan ulang: ");
+		printf("\n\t\tNilai yang anda masukan tidak valid! Masukan ulang: ");
         return validasiDesimal();
         printf("\n===============================================\n");
 	} else if (nilai < 0) {
-		printf("\nNilai yang anda masukan tidak valid!\nInput antara 0-100: ");
+		printf("\n\t\tNilai yang anda masukan tidak valid! Input antara 0-100: ");
 		return validasiDesimal();	
 		printf("\n===============================================\n");
 	} else {
@@ -25,24 +30,25 @@ int validasiBiner(){
 	int temp=0;
 	
     if (scanf("%i%c", &nilai, &check) != 2 || check != '\n') {
-    	fflush(stdin);
-		printf("\nNilai yang anda masukan tidak valid!\nMasukan ulang: ");
+        fflush(stdin);
+        printf("\n\t\tNilai yang anda masukan tidak valid! Masukan ulang: ");
         return validasiBiner();
         printf("\n===============================================\n");
-	} else {
-		int a=nilai;
-		 
-		while (nilai != 0) {
-			temp = nilai % 10;
-			if ((temp == 0) || (temp == 1)) {
-                	return a;
-        	} else {
-            	printf("\nNilai yang anda masukan tidak valid!\nInput bilangan biner menggunakan 0 dan 1: ");
-				return validasiBiner();	
-				printf("\n===============================================\n");
-        	}
-    	}
-	}
+    } else {
+      int a=nilai;
+       
+      while (nilai != 0) {
+        temp = nilai % 10;
+          if ((temp == 0) || (temp == 1)) {
+                      return a;
+              } else {
+                  printf("\n\t\tNilai yang anda masukan tidak valid! Input bilangan biner menggunakan 0 dan 1: ");
+            return validasiBiner();	
+            printf("\n===============================================\n");
+              }
+          }
+      }
+   return nilai; 
 } 
 
 
@@ -50,7 +56,7 @@ int validasiBiner(){
 int cetak_pilihan(int pilihan){
 	int biner, desimal, nilai;
 	
-	system("cls");
+	system("cls | clear");
     
     if (pilihan==1){
 		    printf("\t\t__________________________________________________________________\n");	
@@ -61,7 +67,7 @@ int cetak_pilihan(int pilihan){
 			printf("\t\t||                     BINER KE DESIMAL	                        ||\n");								
 			printf("\t\t||______________________________________________________________||\n");	
 			printf("\t\t__________________________________________________________________\n");			
-			printf("Masukan bilangan biner: ");
+			printf("\t\tMasukan bilangan biner: ");
 			
 			biner=validasiBiner();
 			
@@ -74,14 +80,14 @@ int cetak_pilihan(int pilihan){
 		        biner = biner / 10; 
 		        base = base * 2;  
 		    }  
-		    printf("==================================\n");
+		    printf("\t\t==================================\n");
 			printf("                                  \n");
-			printf("   Hasil konversi adalah: %d\n", desimal);
+			printf("\t\t   Hasil konversi adalah: %d\n", desimal);
 			printf("                                  \n");
-			printf("==================================\n");	
+			printf("\t\t==================================\n");	
 	
 		
-			}if (pilihan==2){
+	} if (pilihan==2) {
 			printf("\t\t__________________________________________________________________\n");	
 			printf("\t\t ________________________________________________________________\n");
 			printf("\t\t||                                                              ||\n");					
@@ -90,7 +96,7 @@ int cetak_pilihan(int pilihan){
 			printf("\t\t||                     DESIMAL KE BINER	                        ||\n");								
 			printf("\t\t||______________________________________________________________||\n");	
 			printf("\t\t__________________________________________________________________\n");			
-			printf("Masukan bilangan desimal: ");	
+			printf("\t\tMasukan bilangan desimal: ");	
 			
 			desimal=validasiDesimal();
 			int array[10],i;
@@ -100,49 +106,22 @@ int cetak_pilihan(int pilihan){
 		        array[i]= desimal%2;    
 		        desimal = desimal/2;    
 		    }
-			printf("==================================\n");
-			printf("                                  ");
-		    printf("\nBilangan biner adalah: ");
+				printf("\t\t==================================\n");
+				printf("                                  ");
+			    printf("\n\t\tBilangan biner adalah: ");
 		
 		    for(i=i-1; i>=0; i--){
 		        printf("%d",array[i]); 
 		    }
-		    printf("\n                                  ");
-			printf("\n==================================\n");
-		    return 0;
+			    printf("\n                                  ");
+				printf("\n\t\t==================================\n");
+			    return 0;
 
 			} else {
 				return nilai;
 			}
 	}
 	
-void ulangi(){
-    char pil[10];
-    
-	fflush(stdin);
-	printf ("\nIngin Kembali ke Program? (y/n) : "); 
-	scanf("%s", &pil);
-	
-	if(!strcmp(pil, "y") || !strcmp(pil, "Y")){
-	system("cls");
-	main();
-	}
-	else if(!strcmp(pil, "n") || !strcmp(pil, "N")){
-	system("cls");
-		printf("\t\t__________________________________________________________________\n");	
-			printf("\t\t ________________________________________________________________\n");
-			printf("\t\t||                                                              ||\n");					
-			printf("\t\t||           TERIMAKASIH TELAH MENGGUNAKAN PROGRAM INI          ||\n");						
-			printf("\t\t||..............................................................||\n");				
-			printf("\t\t||                     	BY KELOMPOK 08	                        ||\n");								
-			printf("\t\t||______________________________________________________________||\n");	
-			printf("\t\t__________________________________________________________________\n");
-	}  
-	else{
-		printf("Input yang Dimasukkan Salah!\n");
-		ulangi();
-	}
-}
 
 int main(){
 	
@@ -166,12 +145,40 @@ int main(){
 	printf("\t\t..................................................................\n");	
 	
 	if(pilihan == 1 || pilihan == 2){
-	cetak_pilihan(pilihan);
-	}else{
-	printf("\t\tPilihan tidak tersedia!");
+   		 cetak_pilihan(pilihan);
+	} else {
+   		 printf("\t\tPilihan tidak tersedia!");
 	}
 
 	ulangi();
 	
 	}
 
+
+void ulangi(){
+    char pil[10];
+    
+	fflush(stdin);
+	printf ("\n\t\tIngin Kembali ke Program? (y/n) : "); 
+	scanf("%s", pil);
+	
+	if(!strcmp(pil, "y") || !strcmp(pil, "Y")){
+	system("cls | clear");
+	main();
+	}
+	else if(!strcmp(pil, "n") || !strcmp(pil, "N")){
+	system("cls | clear");
+		printf("\t\t__________________________________________________________________\n");	
+			printf("\t\t ________________________________________________________________\n");
+			printf("\t\t||                                                              ||\n");					
+			printf("\t\t||           TERIMAKASIH TELAH MENGGUNAKAN PROGRAM INI          ||\n");						
+			printf("\t\t||..............................................................||\n");				
+			printf("\t\t||                     	BY KELOMPOK 08	                        ||\n");								
+			printf("\t\t||______________________________________________________________||\n");	
+			printf("\t\t__________________________________________________________________\n");
+	}  
+	else{
+		printf("\t\tInput yang Dimasukkan Salah!\n");
+		ulangi();
+	}
+}
