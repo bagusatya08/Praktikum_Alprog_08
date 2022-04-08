@@ -164,10 +164,10 @@ int bubble_sort_biasa(int kumpulan[], int banyak_data){
 
 int bubble_sort_pointer(int kumpulan[], int banyak_data){
 
-    int tukar,j;
+    int tukar,j,i;
     int *p=kumpulan;
 
-    for ( int i = 0; i < banyak_data; i++){
+    for (i = 0; i < banyak_data; i++){
         for ( j = 0; j < banyak_data-i-1; j++){
             if (*(p+j)>*(p+(j+1))){
                 tukar = *(p+j);
@@ -181,11 +181,11 @@ int bubble_sort_pointer(int kumpulan[], int banyak_data){
 
 void random_number(int kumpulan[],int banyak_data){
 
-    int angka;
+    int angka,i;
     int low=0, high=180000;
     srand(time(NULL));  //using time seed to randomize number
 
-    for (int i = 0; i <banyak_data; i++){
+    for (i = 0; i <banyak_data; i++){
         angka=(rand() % (high-low+1)) + low; //using high dan low parameter to limit random number between 0 and 180000
         kumpulan[i]=angka;
         printf("%d ", kumpulan[i]);
