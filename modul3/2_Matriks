@@ -1,22 +1,17 @@
-// Nama 	: Jesica Syalomitha Sule Ulang
-// NIM 		: 2105551043
-// Kelompok 	: 8
-
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
-
 
 int pilihan;
 int matriksA[10][10];
 int matriksB[10][10];
 int matriksC[10][10];
-int i, j, k, barisA, barisB, kolomA, kolomB, sigma = 0; 
+int i, j, k, barisA, barisB, kolomA, kolomB, sigma = 0;
 
 void quit(){
 	system("cls");
 	printf("\n\n\n\n\n\n\n\n\n+-----------------------------------------------------------------------------+");
-	printf("\n|               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!    				|");
+	printf("\n|               THANK YOU FOR USING THIS PROGRAM!    				            |");
     printf("\n+-----------------------------------------------------------------------------+");
     printf("\n");
     exit(0);
@@ -34,7 +29,7 @@ int validasiInt(){
 	input = scanf(" %d%c", &angka, &karakter);
     if(input != 2 || karakter != '\n'){
         clear();
-        printf("Input Invalid! Mohon masukkan ulang : ");
+        printf("Input Invalid! Mohon Masukkan Ulang : ");
        	validasiInt();
     }
 	else{
@@ -50,7 +45,7 @@ int validasiInt2(){
     if(input != 2 || angka <=0 || karakter != '\n'){
     	clear();
         fflush(stdin);
-        printf("Input invalid! Mohon Masukkan ulang : ");
+        printf("Input Invalid! Mohon Masukkan Ulang : ");
         validasiInt2();
     }
 	else {
@@ -104,14 +99,15 @@ void header(){
 void perkalian(){
 	for(i = 0; i < barisA; i++){
         for(j = 0; j < kolomB; j++){
-            for(k = 0; k < kolomB; k++){
+            for(k = 0; k <  barisB; k++){
                 sigma = sigma + matriksA[i][k] * matriksB[k][j];
             }
             matriksC[i][j] = sigma;
             sigma = 0;
         }
     }
-    //cetak matriks a
+
+//    cetak matriks a
     system("cls");
 	header();
 	printf("\n   - Matriks A :\n\n");
@@ -300,6 +296,7 @@ void inputMatriks(){
 }
 
 int main(){
+	system ("color E0");
 	char karakter;
 	system("cls");
 	printf("+-----------------------------------------------------------------------------+");

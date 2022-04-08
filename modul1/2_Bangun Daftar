@@ -1,3 +1,8 @@
+
+// Nama 	: Jonathan Darren Vincentio
+// NIM 		: 2105551034
+// Kelompok 	: 8
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -9,8 +14,8 @@ int main(){
     float keliling, luas,lebar,panjang,tinggi,sisi,alas,volume,tinggi_prisma,a , b, c, d, d1, d2;
     float jari;
 	int choice, choice2;
-	
 	_repeat {
+	system("cls");
       printf("pilihlah salah satu bangun ruang berikut\n" );
 	  printf("1.  Segitiga sembarang\n");
 	  printf("2.  Belah Ketupat\n" );
@@ -93,10 +98,11 @@ int main(){
             printf("input yang anda masukan salah\n");
             printf("__________________________________________\n");
 	}
-	printf("Selesai\n");
-	printf("Terimakasih\n");
-	printf("__________________________________________\n");
-	printf("Apakah Anda Ingin Melanjutkan\n");
+	printf("__________________________________________\n\n");
+	printf("Program Selesai\n");
+	printf("\n+-----------------------------------------------------------------------------+");
+	printf("\n               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!             		");
+    printf("\n+-----------------------------------------------------------------------------+\n");
 	printf("Ketik 1 Untuk Melanjutkan\n");
 	printf("Ketik 2 Untuk Keluar\n");
 	scanf("%d", &choice2);
