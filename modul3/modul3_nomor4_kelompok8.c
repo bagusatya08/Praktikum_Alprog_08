@@ -65,7 +65,9 @@ int main(){
                     bubble_sort_pointer(kumpulan, jumlah_data);
                 }
                 
-                for (int z = 0; z < jumlah_data; z++){
+                int z;
+
+                for (z = 0; z < jumlah_data; z++){
                     printf("%d ", kumpulan[z]);
                 }
 
@@ -148,9 +150,9 @@ int validation2(char pilih_jenis[]){
 
 int bubble_sort_biasa(int kumpulan[], int banyak_data){
     
-    int tukar,j;
+    int tukar,j,i;
 
-    for ( int i = 0; i < banyak_data; i++){
+    for ( i = 0; i < banyak_data; i++){
         for ( j = 0; j < banyak_data-i-1; j++){
             if (kumpulan[j]>kumpulan[j+1]){
                 tukar=kumpulan[j];
