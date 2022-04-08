@@ -4,7 +4,6 @@
 #include <stdlib.h>
 
 void enkripsi(char input_enkripsi[], int jumlah_pergeseran){
-
     for (int i = 0; i < strlen(input_enkripsi); i++){
         if(islower(input_enkripsi[i])!=0){
             if (input_enkripsi[i]>='a' && input_enkripsi[i]<='z'){
