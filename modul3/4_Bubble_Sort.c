@@ -102,19 +102,22 @@ int validation(char banyak_data[]){
             return 0;
         } else{
             if (banyak_data[i]=='1'){
-                if (banyak_data[i+1]=='1' || banyak_data[i+1]=='2' ||banyak_data[i+1]=='3' ||banyak_data[i+1]=='4' ||banyak_data[i+1]=='5' ||banyak_data[i+1]=='6' ||banyak_data[i+1]=='7' ||banyak_data[i+1]=='8' ||banyak_data[i+1]=='9' ||banyak_data[i+1]=='0'){
+                if (isgraph(banyak_data[i+1])!=0){
                     return 0;
                 }
+                
                 return 1;
             } else if (banyak_data[i]=='2'){
-                if (banyak_data[i+1]=='1' || banyak_data[i+1]=='2' ||banyak_data[i+1]=='3' ||banyak_data[i+1]=='4' ||banyak_data[i+1]=='5' ||banyak_data[i+1]=='6' ||banyak_data[i+1]=='7' ||banyak_data[i+1]=='8' ||banyak_data[i+1]=='9' ||banyak_data[i+1]=='0'){
+                if (isgraph(banyak_data[i+1])!=0){
                     return 0;
                 }
+
                 return 2;
             } else if (banyak_data[i]=='3'){
-                if (banyak_data[i+1]=='1' || banyak_data[i+1]=='2' ||banyak_data[i+1]=='3' ||banyak_data[i+1]=='4' ||banyak_data[i+1]=='5' ||banyak_data[i+1]=='6' ||banyak_data[i+1]=='7' ||banyak_data[i+1]=='8' ||banyak_data[i+1]=='9' ||banyak_data[i+1]=='0'){
+                if (isgraph(banyak_data[i+1])!=0){
                     return 0;
                 }
+
                 return 3;
             } else{
                 return 0;
@@ -131,14 +134,16 @@ int validation2(char pilih_jenis[]){
             return 0;
         } else{
             if (pilih_jenis[i]=='1'){
-                if (pilih_jenis[i+1]=='1' ||pilih_jenis[i+1]=='2' ||pilih_jenis[i+1]=='3' ||pilih_jenis[i+1]=='4' ||pilih_jenis[i+1]=='5' ||pilih_jenis[i+1]=='6' ||pilih_jenis[i+1]=='7' ||pilih_jenis[i+1]=='8' ||pilih_jenis[i+1]=='9' ||pilih_jenis[i+1]=='0' ){
+                if (isgraph(pilih_jenis[i+1])!=0){
                     return 0;
                 }
+
                 return 1;
             } else if (pilih_jenis[i]=='2'){
-                if (pilih_jenis[i+1]=='1' ||pilih_jenis[i+1]=='2' ||pilih_jenis[i+1]=='3' ||pilih_jenis[i+1]=='4' ||pilih_jenis[i+1]=='5' ||pilih_jenis[i+1]=='6' ||pilih_jenis[i+1]=='7' ||pilih_jenis[i+1]=='8' ||pilih_jenis[i+1]=='9' ||pilih_jenis[i+1]=='0' ){
+                if (isgraph(pilih_jenis[i+1])!=0){
                     return 0;
                 }
+                
                 return 2;
             } else{
                 return 0;

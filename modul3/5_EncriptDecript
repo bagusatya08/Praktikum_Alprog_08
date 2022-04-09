@@ -1,0 +1,176 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+void enkripsi(char input_enkripsi[], int jumlah_pergeseran);
+void dekripsi(char input_dekripsi[], int jumlah_pergeseran);
+int validation(char pilihan[]);
+int validasiInt();
+
+int main(){
+    
+    char input_enkripsi[100], ulang[10], input_dekripsi[100];
+    int jumlah_pergeseran;
+    char pilihan[10];
+    int n;
+
+    do{
+        printf("+------------------------------+\n");
+        printf("| LIST PILIHAN MENU            |\n");
+        printf("+------------------------------+\n");
+        printf("| 1. ENKRIPSI                  |\n");
+        printf("| 2. DEKRIPSI                  |\n");
+        printf("+------------------------------+\n");    
+        printf("| MASUKAN PILIHAN MENU : ");
+        scanf("%s", pilihan);
+        system("cls || clear");
+
+        if (validation(pilihan)==1 || validation(pilihan)==2){
+            printf("+------------------------------+\n");
+            printf("| MASUKAN JUMLAH PERGESERAN    |\n");
+            printf("+------------------------------+\n");
+            printf("| : ");
+
+            n=validasiInt(jumlah_pergeseran);
+
+            if (validation(pilihan)==1){
+                printf("+------------------------------+\n");
+                printf("| MASUKAN PLAINTEXT            |\n");
+                printf("+------------------------------+\n");
+                printf("| : ");
+                scanf(" %[^\n]s", input_enkripsi);
+                        
+                enkripsi(input_enkripsi, n);
+
+                printf("+------------------------------+\n");
+                printf("| HASIL ENKRIPSI               |\n");
+                printf("+------------------------------+\n");
+                printf("| : %s\n", input_enkripsi);
+                printf("+------------------------------+\n");
+            } else if (validation(pilihan)==2){
+                printf("+------------------------------+\n");
+                printf("| MASUKAN CHYPERTEXT           |\n");
+                printf("+------------------------------+\n");
+                printf("| : ");
+                scanf(" %[^\n]s", input_dekripsi);
+
+                dekripsi(input_dekripsi, n);
+                printf("+------------------------------+\n");
+                printf("| HASIL DEKRIPSI               |\n");
+                printf("+------------------------------+\n");
+                printf("| : %s\n", input_dekripsi);
+                printf("+------------------------------+\n");
+            }
+            
+        } else{
+            printf("+------------------------------+\n");
+            printf("| MASUKAN PILIHAN YANG SESUAI! |\n");
+            printf("+------------------------------+\n");
+        }
+
+        printf("\n\n+------------------------------+\n");
+        printf("| MENGULANG PROGRAM ?          |\n");
+        printf("+------------------------------+\n");
+        printf("| (y/Y): ");
+        scanf("%s", ulang);
+        printf("+------------------------------+\n");
+        system("cls || clear");
+    } while (strcmp(ulang, "y")==0 || strcmp(ulang, "Y")==0);
+
+    printf("+---------------------------------------------+\n");
+    printf("| TERIMA KASIH TELAH MENGGUNAKAN PROGRAM KAMI |\n");
+    printf("+---------------------------------------------+\n");
+
+    return 0;
+}
+
+void enkripsi(char input_enkripsi[], int jumlah_pergeseran){
+    char karakter;
+
+    for(int i=0; input_enkripsi[i] != '\0'; i++){
+        karakter = input_enkripsi[i];
+        if (karakter >= 'a' && karakter<='z'){
+            karakter=karakter+jumlah_pergeseran;
+            if (karakter>'z'){
+                karakter=karakter-'z'+'a'-1;
+            }
+            input_enkripsi[i]=toupper(karakter);
+
+        } else if (karakter >='A' && karakter <='Z'){
+            if (karakter >= 'A' && karakter<='Z'){
+            karakter=karakter+jumlah_pergeseran;
+            if (karakter>'Z'){
+                karakter=karakter-'Z'+'A'-1;
+            }
+            input_enkripsi[i]=tolower(karakter);
+
+        }  
+    }
+}
+}
+
+void dekripsi(char input_dekripsi[], int jumlah_pergeseran){
+    char karakter;
+
+    for (int i = 0; input_dekripsi[i] != '\0'; i++){
+        karakter = input_dekripsi[i];
+        if (karakter>='a' && karakter<='z'){
+            karakter=karakter-jumlah_pergeseran;
+            if (karakter<'a'){
+                karakter=karakter+'z'-'a'+1;
+            }
+            input_dekripsi[i]=toupper(karakter);
+
+        } else if (karakter>='A' && karakter<='Z'){
+            karakter=karakter-jumlah_pergeseran;
+            if (karakter<'A'){
+                karakter=karakter+'Z'-'A'+1;
+            }
+            input_dekripsi[i]=tolower(karakter);
+        }  
+    }
+}
+
+int validation(char pilihan[]){
+    int i;
+    for ( i = 0; i < strlen(pilihan); i++){
+        if (isdigit(pilihan[i])==0){
+            return 0;
+        } else{
+            if (pilihan[i]=='1'){
+                if (isgraph(pilihan[i+1])!=0){
+                    return 0;
+                }
+                
+                return 1;
+            } else if (pilihan[i]=='2'){
+                if (isgraph(pilihan[i+1])!=0){
+                    return 0;
+                }
+
+                return 2;
+            } else{
+                return 0;
+            }
+        }
+    }
+    return 0;
+}
+
+int validasiInt(int jumlah_pergeseran) {
+    int nilai;
+	char check;
+	
+    if (scanf("%i%c", &jumlah_pergeseran, &check) != 2 || check != '\n') {
+    	fflush(stdin);
+        printf("+------------------------------+\n");
+		printf("| NILAI INPUT TIDAK VALID !\n");
+        printf("+------------------------------+\n");
+        printf("| MASUKAN ULANG : ");
+        return validasiInt(jumlah_pergeseran);
+        printf("+------------------------------+\n");
+	} else {
+        return jumlah_pergeseran;
+    }
+}

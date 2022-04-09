@@ -3,66 +3,14 @@
 #include<stdlib.h>
 #include<string.h>
 
-void tukar(int *a, int *b){
-    int t = *a;
-    *a = *b;
-    *b = t;
-}
-
-void bubble_sort(int kumpulan[], int banyak_data){
-    
-    for ( int i = 0; i < banyak_data; i++){
-        for ( int j = 0; j < banyak_data-i-1; j++){
-            if (kumpulan[j]>kumpulan[j+1]){
-                tukar(&kumpulan[j], &kumpulan[j+1]);
-            }  
-        } 
-    }
-}
-
-void linear_search(int kumpulan[], int dicari){
-    
-    int n=0;
-    while (dicari!=kumpulan[n]){
-        n++;
-    }
-    printf("TERLETAK PADA INDEKS KE-%d\n", n);
-}
-
-void random_number(int kumpulan[],int banyak_data){
-
-    int angka;
-    int low=0, high=180000;
-    srand(time(NULL));
-
-//memasukan nilai random ke dalam array
-    for (int i = 0; i <banyak_data; i++){
-        angka=(rand() % (high-low+1)) + low;
-        kumpulan[i]=angka;
-        printf("%d ", kumpulan[i]);
-    }
-}
-
-void insertion_sort(int kumpulan[], int banyak_data){
-    
-    int tukar;
-
-    for (int i = 1; i < banyak_data; i++){
-        tukar=kumpulan[i];
-
-        int j=i-1;
-
-        while (j>=0 && kumpulan[j]>tukar){
-            kumpulan[j+1]=kumpulan[j];
-            j--;
-        }
-        kumpulan[j+1]=tukar;
-    }
-}
+void bubble_sort(int kumpulan[], int banyak_data);
+void linear_search(int kumpulan[], int dicari);
+void insertion_sort(int kumpulan[], int banyak_data);
+void random_number(int kumpulan[],int banyak_data);
 
 int main(){
 
-    int kumpulan[70000]={};
+    int kumpulan[70000];
     int banyak_data, dicari, pilihan_program=0, pilihan_searching=0, pilihan_sorting=0;
     char mengulang[10];
 
@@ -174,4 +122,59 @@ int main(){
     }while(strcmp(mengulang, "y")==0 || strcmp(mengulang,"Y")==0);
 
     return 0;
+}
+
+void bubble_sort(int kumpulan[], int banyak_data){
+    
+    int tukar,j,i;
+
+    for ( i = 0; i < banyak_data; i++){
+        for ( j = 0; j < banyak_data-i-1; j++){
+            if (kumpulan[j]>kumpulan[j+1]){
+                tukar=kumpulan[j];
+                kumpulan[j]=kumpulan[j+1];
+                kumpulan[j+1]=tukar;
+            }  
+        } 
+    }
+    return kumpulan[j];
+}
+
+void linear_search(int kumpulan[], int dicari){
+    
+    int n=0;
+    while (dicari!=kumpulan[n]){
+        n++;
+    }
+    printf("TERLETAK PADA INDEKS KE-%d\n", n);
+}
+
+void insertion_sort(int kumpulan[], int banyak_data){
+    
+    int tukar;
+
+    for (int i = 1; i < banyak_data; i++){
+        tukar=kumpulan[i];
+
+        int j=i-1;
+
+        while (j>=0 && kumpulan[j]>tukar){
+            kumpulan[j+1]=kumpulan[j];
+            j--;
+        }
+        kumpulan[j+1]=tukar;
+    }
+}
+
+void random_number(int kumpulan[],int banyak_data){
+
+    int angka;
+    int low=0, high=180000;
+    srand(time(NULL));
+
+    for (int i = 0; i <banyak_data; i++){
+        angka=(rand() % (high-low+1)) + low;
+        kumpulan[i]=angka;
+        printf("%d ", kumpulan[i]);
+    }
 }
