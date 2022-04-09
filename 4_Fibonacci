@@ -1,4 +1,10 @@
 #include<stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int validasiFiboReku();
+int validasiFiboItera();
+void ulangi();
 
 int validasiFiboReku(){
 	int nilai;
@@ -6,11 +12,11 @@ int validasiFiboReku(){
 	
     if (scanf("%i%c", &nilai, &check) != 2 || check != '\n') {
     	fflush(stdin);
-		printf("\nNilai yang anda masukan tidak valid!\nMasukan ulang: ");
+		printf("\n\t\tNilai yang anda masukan tidak valid! Masukan ulang: ");
         return validasiFiboReku();
         printf("\n===============================================\n");
 	} else if (nilai < 0) {
-		printf("\nNilai yang anda masukan tidak valid!\nInput antara 0-100: ");
+		printf("\n\t\tNilai yang anda masukan tidak valid! Input antara 0-100: ");
 		return validasiFiboReku();	
 		printf("\n===============================================\n");
 	} else {
@@ -24,11 +30,11 @@ int validasiFiboItera(){
 	
     if (scanf("%i%c", &nilai, &check) != 2 || check != '\n') {
     	fflush(stdin);
-		printf("\nNilai yang anda masukan tidak valid!\nMasukan ulang: ");
+		printf("\n\t\tNilai yang anda masukan tidak valid! Masukan ulang: ");
         return validasiFiboItera();
         printf("\n===============================================\n");
 	} else if (nilai < 0) {
-		printf("\nNilai yang anda masukan tidak valid!\nInput antara 0-100: ");
+		printf("\n\t\tNilai yang anda masukan tidak valid!\nInput antara 0-100: ");
 		return validasiFiboItera();	
 		printf("\n===============================================\n");
 	} else {
@@ -40,12 +46,11 @@ int cetak_pilihan(int pilihan){
 	int nilai;
 	int n, first = 0, second = 1, result, i;
 	
-	system("cls");
+	system("cls | clear");
     
     if (pilihan==1){
 			FibonacciReku();
-			
-			}if (pilihan==2){
+	} if (pilihan==2 ){
 			printf("\t\t__________________________________________________________________\n");	
 			printf("\t\t ________________________________________________________________\n");
 			printf("\t\t||                                                              ||\n");					
@@ -54,13 +59,13 @@ int cetak_pilihan(int pilihan){
 			printf("\t\t||                    Dengan Metode Iteratif	                ||\n");								
 			printf("\t\t||______________________________________________________________||\n");	
 			printf("\t\t__________________________________________________________________\n");			
-			printf("\nMasukan jumlah bilangan fibonacci: ");	
+			printf("\n\t\tMasukan jumlah bilangan fibonacci: ");	
 			
 			n=validasiFiboItera();
 			
 			
-	
-			  printf("\nHasil Bilangan Fibonaci adalah:  \n");
+			printf("\t\t==================================\n");
+			  printf("\n \t\t Hasil Bilangan Fibonaci adalah:  ");
 			  
 			  for (i = 0; i < n; i++){
 			    if (i <= 1) 
@@ -71,15 +76,16 @@ int cetak_pilihan(int pilihan){
 			      second = result;
 			    }
 			    printf("%d ", result);
-			  } 
-			  return 0;
-			} 
+			}
+	} else {
+			return nilai;
+		} 
 }
 
 int FibonacciReku(){
 		int n, i;
 		int j = 0;
-		int pilih;
+		int pilih, nilai;
 	
 			printf("\t\t__________________________________________________________________\n");	
 			printf("\t\t ________________________________________________________________\n");
@@ -89,17 +95,20 @@ int FibonacciReku(){
 			printf("\t\t||                    Dengan Metode Rekursif	                ||\n");								
 			printf("\t\t||______________________________________________________________||\n");	
 			printf("\t\t__________________________________________________________________\n");	
-			printf("\nMasukan jumlah bilangan fibonacci: ");	
+			printf("\n\t\tMasukan jumlah bilangan fibonacci: ");	
 			
 			n=validasiFiboReku();
 	
 	//output hasil
-	printf("\nHasil bilangan fibonacci adalah: \n");
+	 	printf("\t\t==================================\n");
+		printf("\n \t\t Hasil bilangan fibonacci adalah: ");
+		
 	for (i=1; i<=n; i++) {
 		printf("%d  ", menghitungfibonacci(j));
 		j++; 
 	} 
 	ulangi();
+		return nilai;
 }
 
 int menghitungfibonacci (int n){
@@ -110,36 +119,7 @@ int menghitungfibonacci (int n){
 	}
 }
 
-int ulangi(){
-    char pil[10];
-    
-	fflush(stdin);
-	printf ("\nIngin Kembali ke Program? (y/n) : "); 
-	scanf("%s", &pil);
-	
-	if(!strcmp(pil, "y") || !strcmp(pil, "Y")){
-	system("cls");
-	main();
-	}
-	else if(!strcmp(pil, "n") || !strcmp(pil, "N")){
-	system("cls");
-		printf("\t\t__________________________________________________________________\n");	
-			printf("\t\t ________________________________________________________________\n");
-			printf("\t\t||                                                              ||\n");					
-			printf("\t\t||           TERIMAKASIH TELAH MENGGUNAKAN PROGRAM INI          ||\n");						
-			printf("\t\t||..............................................................||\n");				
-			printf("\t\t||                     	BY KELOMPOK 08	                        ||\n");								
-			printf("\t\t||______________________________________________________________||\n");	
-			printf("\t\t__________________________________________________________________\n");
-	}  
-	else{
-		printf("Input yang Dimasukkan Salah!\n");
-		ulangi();
-	}
-}
-
 int main(){
-	
 	int pilihan;
 	
 	tampilan:
@@ -160,14 +140,45 @@ int main(){
 	printf("\t\t..................................................................\n");	
 	
 	if(pilihan == 1 || pilihan == 2){
-	cetak_pilihan(pilihan);
-	}else{
-	printf("\t\tPilihan tidak tersedia!");
+		cetak_pilihan(pilihan);
+	} else {
+		printf("\t\tPilihan tidak tersedia!");
 	}
 
 	ulangi();
 	
 	}
+
+
+void ulangi(){
+    char pil[10];
+    int nilai;
+    
+	fflush(stdin);
+	printf ("\n\t\tIngin Kembali ke Program? (y/n) : "); 
+	scanf("%s", pil);
+	
+	if(!strcmp(pil, "y") || !strcmp(pil, "Y")){
+	system("cls | clear");
+	main();
+	} else if(!strcmp(pil, "n") || !strcmp(pil, "N")){ 
+		system("cls | clear");
+			printf("\t\t__________________________________________________________________\n");	
+			printf("\t\t ________________________________________________________________\n");
+			printf("\t\t||                                                              ||\n");					
+			printf("\t\t||           TERIMAKASIH TELAH MENGGUNAKAN PROGRAM INI          ||\n");						
+			printf("\t\t||..............................................................||\n");				
+			printf("\t\t||                     	BY KELOMPOK 08	                        ||\n");								
+			printf("\t\t||______________________________________________________________||\n");	
+			printf("\t\t__________________________________________________________________\n");
+			
+	} else {
+		printf("\t\tInput yang Dimasukkan Salah!\n");
+		ulangi();
+	}
+	
+}
+
 
 	
 	
