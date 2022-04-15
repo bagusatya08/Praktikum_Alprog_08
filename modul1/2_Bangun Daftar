@@ -4,10 +4,17 @@
 
 float keliling, luas,lebar,panjang,tinggi,sisi,alas,volume,tinggi_prisma,a , b, c, d, d1, d2;
 float jari;
+int ending();
+int invalidinputs();
+int segitiga_sembarang();
+int belah_ketupat();
+int jajar_genjang();
+int trapesium();
+int lingkaran();
 
 int main(){
 	int choice, choice2;
-      printf("pilihlah salah satu bangun ruang berikut\n" );
+      printf("pilihlah salah satu bangun ruang berikut, hanya bisa menggunakan angka\n" );
 	  printf("1.  Segitiga sembarang\n");
 	  printf("2.  Belah Ketupat\n" );
 	  printf("3.  Jajar genjang\n" );
@@ -38,7 +45,7 @@ int main(){
 	ending();
 }
 
-void ending() {
+int ending() {
 	int choice2;
 	printf("Program Selesai\n");
 	printf("\n+-----------------------------------------------------------------------------+");
