@@ -15,12 +15,12 @@ void Belah_Ketupat();
 void Jajar_genjang();
 void Trapesium();
 void Lingkaran();
-int validasiInt(int choice);
+int  validasiInt(int choice);
 
 int main()
 {
     int choice;
-    printf("pilihlah salah satu bangun ruang berikut, hanya bisa menggunakan angka\n");
+    printf("pilihlah salah satu bangun ruang berikut\n");
     printf("1.  Segitiga sembarang\n");
     printf("2.  Belah Ketupat\n");
     printf("3.  Jajar genjang\n");
@@ -180,6 +180,7 @@ void Segitiga_sembarang()
     printf("__________________________________________\n");
     printf("keliling Segitiga sembarang adalah %.0f\n", keliling);
     printf("luas Segitiga sembarang adalah %.0f\n", luas);
+    
     // ending();
 }
 
@@ -228,6 +229,7 @@ void Belah_Ketupat()
     printf("__________________________________________\n");
     printf("keliling Belah Ketupat adalah %.0f\n", keliling);
     printf("luas Belah Ketupat adalah %.0f\n", luas);
+    printf("__________________________________________\n");
     ending();
 }
 
@@ -276,6 +278,7 @@ void Jajar_genjang()
     printf("__________________________________________\n");
     printf("Keliling Jajar genjang adalah %.0f\n", keliling);
     printf("luas Jajar genjang adalah %.0f\n", luas);
+    printf("__________________________________________\n");
 }
 
 void Trapesium()
@@ -334,6 +337,7 @@ void Trapesium()
     printf("__________________________________________\n");
     printf("keliling trapesium adalah %.0f\n", keliling);
     printf("Luas trapesium adalah %.0f\n", luas);
+    printf("__________________________________________\n");
 }
 
 void Lingkaran()
@@ -359,6 +363,7 @@ void Lingkaran()
     printf("__________________________________________\n");
     printf("keliling lingkaran adalah %.0f\n", keliling);
     printf("Luas lingkaran adalah %.0f\n", luas);
+    printf("__________________________________________\n");
 }
 
 int validasiInt(int choice)
