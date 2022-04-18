@@ -1,6 +1,8 @@
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
+
+void quit();
+void inputMatriks();
 
 int pilihan;
 int matriksA[10][10];
@@ -8,33 +10,67 @@ int matriksB[10][10];
 int matriksC[10][10];
 int i, j, k, barisA, barisB, kolomA, kolomB, sigma = 0;
 
+int main(){
+	system ("color E0");
+	char karakter;
+	system("cls || clear");
+	printf("+-----------------------------------------------------------------------------+");
+	printf("\n|                         PROGRAM OPERASI MATRIKS                             |");
+    printf("\n+-----------------------------------------------------------------------------+");
+    printf("\n|   Pilih Menu Program :                                                      |");
+    printf("\n|                                                                             |");
+	printf("\n|      1. Perkalian                                                           |");
+	printf("\n|      2. Penjumlahan                                                         |");
+	printf("\n|      3. Transpose                                                           |");
+	printf("\n|      4. Keluar                                                              |");
+	printf("\n+-----------------------------------------------------------------------------+"); 
+	while(1){
+        printf("\nMasukan pilihan: ");
+        if (scanf("%d%c", &pilihan, &karakter) != 2 || karakter != '\n') {
+            printf("\nInput Invalid! Mohon hanya memasukkan angka/bilangan bulat 1 - 4 !\n");
+            fflush(stdin);
+        } else {
+            if (pilihan == 1 || pilihan == 2 || pilihan == 3){
+                inputMatriks();
+                break;
+            } else if (pilihan == 4){
+                quit();
+                break;
+            } else {
+                printf("\nInput Invalid! Mohon hanya memasukkan angka/bilangan bulat 1 - 4 !\n");
+            }
+        }
+    }
+}
+
 void quit(){
-	system("cls");
-	printf("\n\n\n\n\n\n\n\n\n+-----------------------------------------------------------------------------+");
-	printf("\n|               THANK YOU FOR USING THIS PROGRAM!    				            |");
+    system("cls || clear");
+    printf("\n\n\n\n\n\n\n\n\n+-----------------------------------------------------------------------------+");
+    printf("\n|               THANK YOU FOR USING THIS PROGRAM!    				            |");
     printf("\n+-----------------------------------------------------------------------------+");
     printf("\n");
     exit(0);
 }
 
-int clear(){
-	while(getchar() != '\n');
-	return 1;
+void clear(){
+    system("cls || clear");
 }
 
 int validasiInt(){
     int input, angka;
     char karakter;
   
-	input = scanf(" %d%c", &angka, &karakter);
+    input = scanf(" %d%c", &angka, &karakter);
+
     if(input != 2 || karakter != '\n'){
-        clear();
+        system("cls || clear");
         printf("Input Invalid! Mohon Masukkan Ulang : ");
        	validasiInt();
-    }
-	else{
+    } else {
         return angka;
-	}
+    }
+
+    return 1;
 }
 
 int validasiInt2(){
@@ -43,14 +79,15 @@ int validasiInt2(){
     
     input = scanf(" %d%c", &angka, &karakter);
     if(input != 2 || angka <=0 || karakter != '\n'){
-    	clear();
+        system("cls || clear");
         fflush(stdin);
         printf("Input Invalid! Mohon Masukkan Ulang : ");
         validasiInt2();
-    }
-	else {
+    } else {
         return angka;
-	}
+	  }
+
+  return 1;
 }
 
 void reset(){
@@ -59,11 +96,11 @@ void reset(){
     printf("\n[R] Reset							[Q] Quit");
     while(1){
 		printf("\n\nMasukkan pilihan: ");
-		if(((scanf(" %c%c", &pilih, &karakter)) != 2 || karakter != '\n') && clear()){
+		if(((scanf(" %c%c", &pilih, &karakter)) != 2 || karakter != '\n') && system("cls || clear"));
+		{
 			printf("Input Invalid! \n");
 			printf("\n[R] Reset							[Q] Quit");
  		}
-		else{
 			if(pilih == 'R' || pilih == 'r'){
 				main();
 			}
@@ -76,20 +113,17 @@ void reset(){
 			}
 		}	
 	}
-}
 
 void header(){
 	if(pilihan == 1){
 		printf("+-----------------------------------------------------------------------------+");
 		printf("\n|              PERKALIAN MATRIKS ORDO [%d] x [%d] DENGAN [%d] x [%d]              |", barisA, kolomA, barisB, kolomB);
     	printf("\n+-----------------------------------------------------------------------------+\n");
-	}
-	else if(pilihan == 2){
+	} else if(pilihan == 2) {
 		printf("+-----------------------------------------------------------------------------+");
 		printf("\n|             PENJUMLAHAN MATRIKS ORDO [%d] x [%d] DENGAN [%d] x [%d]             |", barisA, kolomA, barisB, kolomB);
     	printf("\n+-----------------------------------------------------------------------------+\n");
-	}	
-	else{
+	} else{
 		printf("+-----------------------------------------------------------------------------+");
 		printf("\n|                       TRANSPOSE MATRIKS ORDO [%d] x [%d]                      |", barisA, kolomA);
 		printf("\n+-----------------------------------------------------------------------------+\n");
@@ -108,7 +142,7 @@ void perkalian(){
     }
 
 //    cetak matriks a
-    system("cls");
+    system("cls || clear");
 	header();
 	printf("\n   - Matriks A :\n\n");
 	for(i = 0; i < barisA; i++){
@@ -144,7 +178,7 @@ void penjumlahan(){
            matriksC[i][j] = matriksA[i][j] + matriksB[i][j];
         }
     }
-	system("cls");
+	system("cls || clear");
 	header();
 	//cetak matriks a
 	printf("\n   - Matriks A : \n\n");
@@ -176,7 +210,7 @@ void penjumlahan(){
 }
 
 void transpose(){
-	system("cls");
+	system("cls || clear");
 	header();
 	printf("\n   - Matriks :\n\n");
 	for(i = 0; i < barisA; i++){
@@ -198,7 +232,7 @@ void transpose(){
 }
 
 void inputMatriks(){
-	system("cls");
+	system("cls || clear");
 	if (pilihan == 1 || pilihan == 2){
 		if (pilihan == 1){
 			printf("+-----------------------------------------------------------------------------+");
@@ -222,28 +256,22 @@ void inputMatriks(){
 	//perkalian matriks
 	if (pilihan == 1 && kolomA != barisB || pilihan == 1 && kolomB != barisA ){
 		printf("Jumlah BARIS Matriks Pertama Harus SAMA Dengan Jumlah KOLOM Matriks Kedua !");
-		getch();
-		system("cls");
+		system("cls || clear");
 		inputMatriks();
-	}
-	//penjumlahan matriks
-    else if (pilihan == 2 && barisA != barisB || pilihan == 2 && kolomA != kolomB){
-   		printf("Jumlah BARIS dan KOLOM Kedua Matriks Harus SAMA !");
-		getch();
-		system("cls");
-		inputMatriks();
-	}
-	//input elemen matriks
-  	else if (pilihan == 2|| pilihan == 1){
+	} else if (pilihan == 2 && barisA != barisB || pilihan == 2 && kolomA != kolomB) { //penjumlahan matriks
+        printf("Jumlah BARIS dan KOLOM Kedua Matriks Harus SAMA !");
+        system("cls || clear");
+        inputMatriks();
+	} else if (pilihan == 2|| pilihan == 1){ //input elemen matriks
   		i = 0;
-		j = 0;
-		system("cls");
-		header(); 	
+      j = 0;
+      system("cls || clear");
+      header(); 	
 	    while (i < barisA){
    		    while(j < kolomA){
    			    printf("\nMasukkan Elemen Matriks A [%d], [%d]	: ", i+1, j+1);
-				matriksA[i][j] = validasiInt(); 
-				j++;
+            matriksA[i][j] = validasiInt(); 
+            j++;
    	   		}
    	   	 	i++;
    	    	j = 0;
@@ -280,7 +308,7 @@ void inputMatriks(){
 		printf("\nMasukkan Jumlah kolom Matriks	: ");
 		kolomA = validasiInt2();
 	   	
-		system("cls"); 
+		system("cls || clear"); 
 		header();  	
 		while(i < barisA){
   			while(j < kolomA){
@@ -293,37 +321,5 @@ void inputMatriks(){
 		}
     transpose();
    }
-}
 
-int main(){
-	system ("color E0");
-	char karakter;
-	system("cls");
-	printf("+-----------------------------------------------------------------------------+");
-	printf("\n|                         PROGRAM OPERASI MATRIKS                             |");
-    printf("\n+-----------------------------------------------------------------------------+");
-    printf("\n|   Pilih Menu Program :                                                      |");
-    printf("\n|                                                                             |");
-	printf("\n|      1. Perkalian                                                           |");
-	printf("\n|      2. Penjumlahan                                                         |");
-	printf("\n|      3. Transpose                                                           |");
-	printf("\n|      4. Keluar                                                              |");
-	printf("\n+-----------------------------------------------------------------------------+"); 
-	while(1){
-        printf("\nMasukkan pilihan: ");
-        if (scanf("%d%c", &pilihan, &karakter) != 2 || karakter != '\n') {
-            printf("\nInput Invalid! Mohon hanya memasukkan angka/bilangan bulat 1 - 4 !\n");
-            fflush(stdin);
-        } else {
-            if (pilihan == 1 || pilihan == 2 || pilihan == 3){
-                inputMatriks();
-                break;
-            } else if (pilihan == 4){
-                quit();
-                break;
-            } else {
-                printf("\nInput Invalid! Mohon hanya memasukkan angka/bilangan bulat 1 - 4 !\n");
-            }
-        }
-    }
 }
