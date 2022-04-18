@@ -26,8 +26,7 @@ int main(){
     printf("4.  Prisma_segitiga\n" );
     printf("5.  Kerucut\n"         );
     printf("Masukan Pilihan Anda: ");
-	choice=validasiInt(choice);
-	
+	choice=validasiInt(choice);	
     if(choice==1){
         Tabung();
     }else if(choice==2){
@@ -47,7 +46,6 @@ int main(){
 }
 int readinput( char buff[], int mode, int limit ) {
 int ch, index = 0;
-
  ch = getchar();
  while( (ch != '\n') && (index < limit) ) {
   switch( mode ) {
@@ -72,32 +70,33 @@ int ch, index = 0;
    default:
     /*  */
     break;
-  }
+  	}
   	ch = getchar();
- }
+	}
  	buff[index] = 0x00;  /* null terminate input */
  return index;
 }
 
 void ending() {
- int choice2;
+int choice2;
  printf("Program Selesai\n");
  printf("\n+-----------------------------------------------------------------------------+");
  printf("\n               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!               ");
-    printf("\n+-----------------------------------------------------------------------------+\n");
+ printf("\n+-----------------------------------------------------------------------------+\n");
  printf("Ketik 1 Untuk Melanjutkan\n");
  printf("Ketik 2 Untuk Keluar\n");
  scanf("%d", &choice2);
  if (choice2 == 1){
   main();
- } else if (choice2 == 2){
+ 	} 
+ 	else if (choice2 == 2){
      printf("Terima kasih telah menggunakan program ini\n");
-     
- } else {
+	 } 
+ 	else {
      system(" || clear");
      printf("\nInvalid Input\n");
      ending();
- }
+ 	}	
     
 }
 
@@ -255,10 +254,11 @@ void Kerucut(){
 	printf("Volume kerucut adalah %.0f\n",volume);
 	printf("Luas kerucut adalah %.2f\n",luas);
 }
+
 int validasiInt(int choice) {
     char check;
     if (scanf("%d%c", &choice, &check) != 2 || check != '\n') {
-     while((check = getchar()) != '\n' && check != EOF){
+    while((check = getchar()) != '\n' && check != EOF){
         }; //input buffer
         printf("__________________________________________\n");
         printf("input yang anda masukan salah\n");
@@ -266,7 +266,8 @@ int validasiInt(int choice) {
         printf("masukan ulang : ");
         return validasiInt(choice);
         printf("__________________________________________\n");
-  } else if (choice<1 && choice>5) {
+  	} 
+  	else if (choice<1 && choice>5) {
         system("cls || clear");
         printf("__________________________________________\n");
         printf("input yang anda masukan salah\n");
