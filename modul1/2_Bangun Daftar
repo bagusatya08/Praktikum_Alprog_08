@@ -8,7 +8,6 @@
 #define ALPHA     2          /* data akan dibaca sebagai alphabet */
 #define STRING    3          /* data akan dibaca sebagai ascii */
 
-
 void ending();
 void invalidinputs();
 void Segitiga_sembarang();
@@ -27,7 +26,7 @@ int main(){
     printf("4.  Trapesium\n" );
     printf("5.  Lingkaran\n"         );
     printf("Masukan Pilihan Anda: ");
- choice=validasiInt(choice);
+ 	choice=validasiInt(choice);
 
     if(choice==1){
         Segitiga_sembarang();
@@ -48,41 +47,41 @@ int main(){
 }
 
 int readinput( char buff[], int mode, int limit ) {
- int ch, index = 0;
+int ch, index = 0;
 
- ch = getchar();
- while( (ch != '\n') && (index < limit) ) {
-  switch( mode ) {
+ch = getchar();
+while( (ch != '\n') && (index < limit) ) {
+switch( mode ) {
    case DIGIT://untuk memvalidasi jika input adalah digit
-    if( isdigit( ch ) ) {
-     buff[index] = ch;
-     index++;
-    }
+    	if( isdigit( ch ) ) {
+     	buff[index] = ch;
+     	index++;
+    	}
     break;
    case ALPHA: //untuk memvalidasi jika input adalah karakter
-    if( isalpha( ch ) ) {
-     buff[index] = ch;
-     index++;
-    }
+    	if( isalpha( ch ) ) {
+     	buff[index] = ch;
+     	index++;
+    	}
     break;
    case STRING://untuk memvalidasi jika input adalah string
-    if( isascii( ch ) ) {
-     buff[index] = ch;
-     index++;
-    }
+    	if( isascii( ch ) ) {
+     	buff[index] = ch;
+     	index++;
+    	}
     break;
    default:
     /*  */
     break;
-  }
+		}	
   	ch = getchar();
- }
+ 	}
  	buff[index] = 0x00;  /* null terminate input */
  return index;
 }
 
 void ending() {
- int choice2;
+int choice2;
  	printf("Program Selesai\n");
  	printf("\n+-----------------------------------------------------------------------------+");
  	printf("\n               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!               ");
@@ -93,17 +92,15 @@ void ending() {
  	if (choice2 == 1){
  	system("cls|| clear");
  	main();
- } 
+ 	} 
  	else if (choice2 == 2){
-     printf("Terima kasih telah menggunakan program ini\n");
-     
- } 
+     printf("Terima kasih telah menggunakan program ini\n"); 
+ 	} 
  	else {
      system(" || clear");
      printf("\nInvalid Input\n");
      ending();
- 	}
-    
+ 	}  
 }
 
 void invalidinputs(){
@@ -281,7 +278,7 @@ void Trapesium(){
     }
     keliling = a + b + c + d ;
     luas = (a + c) * 1/2 * b ;
-  printf("__________________________________________\n");
+  	printf("__________________________________________\n");
     printf("keliling trapesium adalah %.0f\n",keliling);
     printf("Luas trapesium adalah %.0f\n",luas);
 }
@@ -290,7 +287,6 @@ void Lingkaran(){
     float keliling, luas,number;
     float jari=0;
     char buffer[MAX];
-
     system("cls || clear");
     printf("Anda telah memilih Lingkaran\n");
     
@@ -300,7 +296,7 @@ void Lingkaran(){
         number = readinput ( buffer, DIGIT, MAX);
         if (jari != 0) {
             number = atoi (buffer);
-        }       
+        }
     }
     keliling =  2 * jari * 3.14;
     luas = jari * jari * 3.14 ;
@@ -320,7 +316,8 @@ int validasiInt(int choice) {
         printf("masukan ulang : ");
         return validasiInt(choice);
         printf("__________________________________________\n");
-  } else if (choice<1 && choice>5) {
+    }
+ 	 else if (choice<1 && choice>5) {
         system("cls || clear");
         printf("__________________________________________\n");
         printf("input yang anda masukan salah\n");
