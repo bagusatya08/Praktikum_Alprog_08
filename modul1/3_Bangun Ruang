@@ -111,6 +111,7 @@ void ending()
     }
     else if (choice2 == 2)
     {
+        system("cls || clear");
         printf("Terima kasih telah menggunakan program ini\n");
     }
     else
