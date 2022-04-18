@@ -25,10 +25,10 @@ int main()
     printf("\t\t\t\t1. Penjumlahan\n");
     printf("\t\t\t\t2. Pengurangan\n");
     printf("\t\t\t\t3. Perkalian\n");
-    printf("\t\t\t\t4. Pembagian\n");
+    printf("\t\t\t\t4. Pembagian\n"); 	
     printf("\t\t\t\t5. Modulus\n");
     printf("\t\t\t\t6. Selesai\n");
-	koreksi(&menu,"\n\t\t\t\t\Masukkan Pilihan Anda (1/2/3/4/5/6): ");
+	koreksi(&menu,"\n\t\t\t\tMasukkan Pilihan Anda (1/2/3/4/5/6): ");
 	printf("***************************************** \n");
 	printf("\n");
 	system("cls || clear");
