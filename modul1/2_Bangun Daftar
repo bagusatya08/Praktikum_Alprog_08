@@ -97,10 +97,10 @@ int readinput(char buff[], int mode, int limit)
     buff[index] = 0x00; /* null terminate input */
     return index;
 }
-
 void ending()
 {
-    int choice2;
+	int choice2;
+
     printf("Program Selesai\n");
     printf("\n+-----------------------------------------------------------------------------+");
     printf("\n               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!               ");
@@ -108,24 +108,22 @@ void ending()
     printf("Ketik 1 Untuk Melanjutkan\n");
     printf("Ketik 2 Untuk Keluar\n");
     scanf("%d", &choice2);
+    choice2 = validasiInt(choice2);
+
     if (choice2 == 1)
     {
-        system("cls|| clear");
         main();
     }
     else if (choice2 == 2)
     {
-    	system("cls || clear");
         printf("Terima kasih telah menggunakan program ini\n");
     }
     else
     {
-        system(" || clear");
         printf("\nInvalid Input\n");
-        ending();
     }
 }
-
+    
 void invalidinputs()
 {
     system("cls || clear");
@@ -137,7 +135,7 @@ void invalidinputs()
 
 void Segitiga_sembarang()
 {
-    float a = 0, b = 0, c = 0, keliling, luas;
+    float a = 0, b = 0, c = 0, keliling, luas, invalidinputs;
     float jari, number;
     char buffer[MAX];
     system("cls || clear");
@@ -145,7 +143,7 @@ void Segitiga_sembarang()
 
     while (a == 0)
     {
-        printf("Masukan ukuran sisi A Segitiga sembarang : ");
+        printf("Masukan ukuran sisi A Segitiga sembarang :  ");
         scanf("%f", &a);
         number = readinput(buffer, DIGIT, MAX);
         if (number != 0)
@@ -164,7 +162,7 @@ void Segitiga_sembarang()
             number = atoi(buffer);
         }
     }
-
+    
     while (c == 0)
     {
         printf("Masukan ukuran sisi C Segitiga sembarang : ");
@@ -175,14 +173,11 @@ void Segitiga_sembarang()
             number = atoi(buffer);
         }
     }
-
     keliling = a + b + c;
     luas = (a + b + c) / 2;
     printf("__________________________________________\n");
-    printf("keliling Segitiga sembarang adalah %.0f\n", keliling);
-    printf("luas Segitiga sembarang adalah %.0f\n", luas);
-    
-    // ending();
+    printf("keliling Segitiga sembarang adalah %.0f cm\n", keliling);
+    printf("luas Segitiga sembarang adalah %.0f cm\n", luas);
 }
 
 void Belah_Ketupat()
@@ -194,6 +189,7 @@ void Belah_Ketupat()
 
     while (sisi == 0)
     {
+    	system("cls || clear");
         printf("Masukan panjang sisi  untuk mencari keliling : ");
         scanf("%f", &sisi);
         number = readinput(buffer, DIGIT, MAX);
@@ -228,8 +224,8 @@ void Belah_Ketupat()
     keliling = 4 * sisi;
     luas = (d1 * d2) * 2;
     printf("__________________________________________\n");
-    printf("keliling Belah Ketupat adalah %.0f\n", keliling);
-    printf("luas Belah Ketupat adalah %.0f\n", luas);
+    printf("keliling Belah Ketupat adalah %.0f cm\n", keliling);
+    printf("luas Belah Ketupat adalah %.0f cm\n", luas);
     printf("__________________________________________\n");
     ending();
 }
@@ -239,6 +235,7 @@ void Jajar_genjang()
     float keliling, luas, tinggi = 0, a = 0, b = 0, number;
     float jari;
     char buffer[MAX];
+    system("cls || clear");
     printf("Anda telah memilih Jajar genjang\n");
 
     while (a == 0)
@@ -277,8 +274,8 @@ void Jajar_genjang()
     keliling = (2 * a) + (2 * b);
     luas = a * tinggi;
     printf("__________________________________________\n");
-    printf("Keliling Jajar genjang adalah %.0f\n", keliling);
-    printf("luas Jajar genjang adalah %.0f\n", luas);
+    printf("Keliling Jajar genjang adalah %.0f cm\n", keliling);
+    printf("luas Jajar genjang adalah %.0f cm \n", luas);
     printf("__________________________________________\n");
 }
 
@@ -336,8 +333,8 @@ void Trapesium()
     keliling = a + b + c + d;
     luas = (a + c) * 1 / 2 * b;
     printf("__________________________________________\n");
-    printf("keliling trapesium adalah %.0f\n", keliling);
-    printf("Luas trapesium adalah %.0f\n", luas);
+    printf("keliling trapesium adalah %.0f cm\n", keliling);
+    printf("Luas trapesium adalah %.0f cm\n", luas);
     printf("__________________________________________\n");
 }
 
@@ -362,8 +359,8 @@ void Lingkaran()
     keliling = 2 * jari * 3.14;
     luas = jari * jari * 3.14;
     printf("__________________________________________\n");
-    printf("keliling lingkaran adalah %.0f\n", keliling);
-    printf("Luas lingkaran adalah %.0f\n", luas);
+    printf("keliling lingkaran adalah %.0f cm\n", keliling);
+    printf("Luas lingkaran adalah %.0f cm\n", luas);
     printf("__________________________________________\n");
 }
 
@@ -378,7 +375,7 @@ int validasiInt(int choice)
         printf("__________________________________________\n");
         printf("input yang anda masukan salah\n");
         printf("__________________________________________\n");
-        printf("masukan ulang : ");
+        printf("masukan ulang pilihanan anda : ");
         return validasiInt(choice);
         printf("__________________________________________\n");
     }
@@ -388,7 +385,7 @@ int validasiInt(int choice)
         printf("__________________________________________\n");
         printf("input yang anda masukan salah\n");
         printf("__________________________________________\n");
-        printf("masukan ulang : ");
+        printf("masukan ulang  : ");
         return validasiInt(choice);
         printf("__________________________________________\n");
     }
