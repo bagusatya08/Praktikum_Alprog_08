@@ -98,6 +98,7 @@ int readinput(char buff[], int mode, int limit)
 void ending()
 {
     int choice2;
+    
     printf("Program Selesai\n");
     printf("\n+-----------------------------------------------------------------------------+");
     printf("\n               TERIMA KASIH TELAH MENGGUNAKAN PROGRAM INI!               ");
@@ -105,20 +106,20 @@ void ending()
     printf("Ketik 1 Untuk Melanjutkan\n");
     printf("Ketik 2 Untuk Keluar\n");
     scanf("%d", &choice2);
+    choice2 = validasiInt(choice2);
+    
     if (choice2 == 1)
     {
+    	system("cls || clear");
         main();
     }
     else if (choice2 == 2)
     {
-        system("cls || clear");
         printf("Terima kasih telah menggunakan program ini\n");
     }
     else
     {
-        system(" || clear");
         printf("\nInvalid Input\n");
-        ending();
     }
 }
 
@@ -162,8 +163,8 @@ void Tabung()
     volume = jari * jari * tinggi * 3.14;
     luas = 2 * jari * (jari * tinggi) * 3.14;
     printf("__________________________________________\n");
-    printf("Volume tabung adalah %.0f\n", volume);
-    printf("luas tabung adalah %.0f\n", luas);
+    printf("Volume tabung adalah %.0f m3\n", volume);
+    printf("luas tabung adalah %.0f cm\n", luas);
 }
 void Bola()
 {
@@ -186,8 +187,8 @@ void Bola()
     volume = 4 / 3 * 3.14 * (jari * jari * jari);
     luas = 4 * 3.14 * (jari * jari);
     printf("__________________________________________\n");
-    printf("Volume bola adalah %.0f\n", volume);
-    printf("luas bola adalah %.3f\n", luas);
+    printf("Volume bola adalah %.0f m3\n", volume);
+    printf("luas bola adalah %.3f cm\n", luas);
 }
 void Limas_segiempat()
 {
@@ -220,8 +221,8 @@ void Limas_segiempat()
     volume = (sisi * sisi * tinggi) * 1 / 3;
     luas = 4 * 1 / 2 * sisi * tinggi + (sisi * sisi);
     printf("__________________________________________\n");
-    printf("Volume limas segiempat adalah %.0f\n", volume);
-    printf("luas limas segiempat adalah %.0f\n", luas);
+    printf("Volume limas segiempat adalah %.0f m3\n", volume);
+    printf("luas limas segiempat adalah %.0f cm\n", luas);
 }
 
 void Prisma_segitiga()
@@ -265,8 +266,8 @@ void Prisma_segitiga()
     volume = (sisi * tinggi * 1 / 2) * tinggi_prisma;
     luas = 2 * (sisi * tinggi / 2) + 3 * (tinggi_prisma * sisi);
     printf("__________________________________________\n");
-    printf("Volume prisma segitiga adalah %.0f\n", volume);
-    printf("Luas prisma segitiga adalah %.0f\n", luas);
+    printf("Volume prisma segitiga adalah %.0f m3\n", volume);
+    printf("Luas prisma segitiga adalah %.0f cm\n", luas);
 }
 void Kerucut()
 {
@@ -299,11 +300,11 @@ void Kerucut()
     volume = jari * jari * tinggi * 1 / 3 * 3.14;
     luas = 3.14 * jari * (jari + sqrt(tinggi * tinggi + jari * jari));
     printf("__________________________________________\n");
-    printf("Volume kerucut adalah %.0f\n", volume);
-    printf("Luas kerucut adalah %.2f\n", luas);
+    printf("Volume kerucut adalah %.0f m3\n", volume);
+    printf("Luas kerucut adalah %.2f cm\n", luas);
 }
 
-int validasiInt(intchoice)
+int validasiInt(int choice)
 {
     char check;
     if (scanf("%d%c", &choice, &check) != 2 || check != '\n')
@@ -314,7 +315,7 @@ int validasiInt(intchoice)
         printf("__________________________________________\n");
         printf("input yang anda masukan salah\n");
         printf("__________________________________________\n");
-        printf("masukan ulang : ");
+        printf("masukan ulang pilihan anda : ");
         return validasiInt(choice);
         printf("__________________________________________\n");
     }
