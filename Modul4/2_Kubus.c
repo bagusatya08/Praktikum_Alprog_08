@@ -33,7 +33,7 @@ void intro(){
 }
 
 int main(){
-	system ("color F0");
+    system ("color F0");
     intro();
     reVldFlt(&panjang_sisi, "\t\t\t\tMasukkan sisi kubus\t: ");
     kubusStr();
