@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void intro();
 void outro();
@@ -33,6 +33,7 @@ void intro(){
 }
 
 int main(){
+	system ("color F0");
     intro();
     reVldFlt(&panjang_sisi, "\t\t\t\tMasukkan sisi kubus\t: ");
     kubusStr();
