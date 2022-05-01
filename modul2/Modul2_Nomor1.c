@@ -1,6 +1,26 @@
 #include <stdio.h>
 #include<stdbool.h>  
 
+int validasi() {
+    int tggl;
+	char hasil;
+	
+    if (scanf("%i%c", &tggl, &hasil) != 2 || hasil != '\n') {
+    	fflush(stdin);
+		printf("\nTanggal yang anda masukan tidak valid!\nMasukan ulang: ");
+        return validasi();
+        printf("\n-----------------------------------------------\n");
+	} else if (tggl > 31 || tggl < 1) {
+		printf("\nNilai yang anda masukan tidak valid!\nPilih tanggal [1-31]: ");
+		return validasi();
+        printf("\n-----------------------------------------------\n");	
+	} else {
+        return tggl;
+    }
+}
+
+
+
 void printHeader(){
     printf("\t----------------------------------------\n");
     printf("\t|       Aplikasi Penentu Zodiak         |\n");
@@ -32,7 +52,7 @@ int main (){
 		
 		//input ke variabel tanggal
 		printf("\t %-25s : ", "Masukkan Tanggal");
-		scanf("%d", &tanggal);
+		tanggal = validasi();
 		
 		
 		
@@ -146,7 +166,7 @@ int main (){
 	    if (strcmp(pil,"n") == 0){
 			break;
 		}
-		system("cls");
+		system("cls || clear");
 	}
 	printf("\n\t------------PROGRAM SELESAI-------------\n");
 }

@@ -1,6 +1,70 @@
 #include <stdio.h>
 #include<stdbool.h>  
 
+//validasipinjaman
+int validasipinjam() {
+    int pinjam;
+	char hasil;
+	
+    if (scanf("%i%c", &pinjam, &hasil) != 2 || hasil != '\n') {
+    	fflush(stdin);
+		printf("\nJumlah pinjaman yang anda masukan tidak valid!!\nSilakan masukan ulang:Rp. ");
+		
+        return validasipinjam();
+        printf("\n------------------------------------------------------------\n");
+	} else if (pinjam > 2500000 || pinjam < 100000) {
+    	printf("\nJumlah pinjaman yang anda masukan tidak valid!!\nSilakan masukan ulang:Rp. ");
+		
+		return validasipinjam();
+        printf("\n------------------------------------------------------------\n");	
+	} else {
+        return pinjam;
+    }
+}
+
+//validasibunga
+int validasibunga() {
+    int bunga;
+	char hasil;
+	
+    if (scanf("%i%c", &bunga, &hasil) != 2 || hasil != '\n') {
+    	fflush(stdin);
+		printf("\nbunga pinjaman yang anda masukan tidak sesuai!!!\nSilakan masukan ulang: ");
+		
+        return validasibunga();
+        printf("\n------------------------------------------------------------\n");
+	} else if (bunga > 30 || bunga < 10) {
+		printf("\nbunga pinjaman yang anda masukan tidak sesuai!!! \nSilakan masukan ulang: ");
+		
+		return validasibunga();
+        printf("\n------------------------------------------------------------\n");	
+	} else {
+        return bunga;
+    }
+}
+
+//validasilpinjam
+int validasilpinjam() {
+    int lpinjam;
+	char hasil;
+	
+    if (scanf("%i%c", &lpinjam, &hasil) != 2 || hasil != '\n') {
+    	fflush(stdin);
+		printf("\nLama pinjaman yang anda masukan tidak sesuai!!!\nSilakan masukan ulang: ");
+		
+        return validasilpinjam();
+        printf("\n------------------------------------------------------------\n");
+	} else if (lpinjam > 36 || lpinjam < 0) {
+		printf("\nLama pinjaman yang anda masukan tidak sesuai!!! \nSilakan masukan ulang: ");
+		
+		return validasilpinjam();
+        printf("\n------------------------------------------------------------\n");	
+	} else {
+        return lpinjam;
+    }
+}
+
+
 //variabel global
 int total_bunga;
 int total_angsuran;
@@ -15,6 +79,7 @@ void printHeader(){
 void hitung_angsuran(int pokok, int bulan, int angsuran_pokok, double bunga){
 	int bunga_now = hitung_bunga(pokok,bulan,angsuran_pokok,bunga);
 	int angsuran_now = angsuran_pokok + bunga_now;
+	
 	total_bunga = total_bunga + bunga_now;
 	total_angsuran = total_angsuran + angsuran_now;
 	printf("\t|  %-3d  | Rp.%-7d |      Rp.%-10d |     Rp.%-12d|\n",bulan,bunga_now,angsuran_pokok,angsuran_now);
@@ -36,11 +101,11 @@ int main (){
 		
 		//menerima input
 		printf("\t%-22s   : Rp. ","Pokok Pinjaman");
-		scanf("%d", &pokok);
+		pokok = validasipinjam();
 		printf("\t%-22s   : ","Besar Bunga (%)");
-		scanf("%d", &bunga_input);
+		bunga_input = validasibunga();
 		printf("\t%-22s   : ","Lama Pinjaman (bulan)");
-		scanf("%d", &bulan);
+		bulan = validasilpinjam();
 		
 	
 		//menghitung bunga dalam bentuk double
