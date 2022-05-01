@@ -117,10 +117,10 @@ void restart(){
     printf("\t\t\t\t[2]. Keluar\n");
     reVldInt(&reset, "\t\t\t\tInputkan Pilihan Anda\t: ");
     if(reset==1){
-        system("cls");
+		system("cls || clear");
         main();
     }else if(reset==2){
-        system("cls");
+		system("cls || clear");
         outro();
     }else{
         printf("\n\t\t\t\tPilihan Tidak Tersedia!!!");
