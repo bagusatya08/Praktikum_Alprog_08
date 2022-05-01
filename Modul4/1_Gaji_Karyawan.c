@@ -109,7 +109,7 @@ void gaji(){
 
 void hasil(){
     gaji();
-    system("cls");
+	system("cls || clear");
     intro();
     printf("\t\t\t\tNama Karyawan\t\t: %s", karyawan.nama);
     printf("\n\t\t\t\tBayaran per Jam\t\t: %d", GAJIPERJAM);
@@ -150,10 +150,10 @@ void restart(){
     printf("\t\t\t\t[2]. Keluar\n");
     reVldInt(&reset, "\t\t\t\tInputkan Pilihan Anda\t: ");
     if(reset==1){
-        system("cls");
+		system("cls || clear");
         main();
     }else if(reset==2){
-        system("cls");
+		system("cls || clear");
         outro();
     }else{
         printf("\n\t\t\t\tPilihan Tidak Tersedia!!!");
