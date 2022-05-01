@@ -23,7 +23,7 @@ struct pegawai{
 }karyawan;
 
 int main(){
-	system ("color F0");
+    system ("color F0");
     intro();
     input_data();
     hasil();
