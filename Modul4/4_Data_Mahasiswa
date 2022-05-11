@@ -12,6 +12,7 @@ typedef struct
 void input_data_mhs(mahasiswa mhs);
 void tampilkan_data_mhs(mahasiswa mhs);
 int validation2();
+int validation3();
 void mengulang(mahasiswa mhs);
 
 int main()
@@ -51,8 +52,8 @@ void input_data_mhs(mahasiswa mhs)
     int pengulangan;
     char kode, y, n;
     pengulangan = 0;
-    do
-    {
+    // do
+    // {
         string induk, name;
         printf("\n+------------------------------+");
         printf("\n| MASUKKAN DATA MAHASISWA\n");
@@ -90,21 +91,22 @@ void input_data_mhs(mahasiswa mhs)
 
         printf("+------------------------------+\n");
         printf("\n| KEMBALI MENGINPUT DATA (y/n):");
-        scanf("%s", &kode);
-        if (kode == 'y')
-        {
-            system("cls | clear");
-        }
-        else if (kode == 'n')
-        {
-            system("cls | clear");
-            main();
-        }
-        else
-        {
-            break;
-        }
-    } while (pengulangan < 1);
+        validation3();
+        // scanf("%s", &kode);
+        // if (kode == 'y')
+        // {
+        //     system("cls | clear");
+        // }
+        // else if (kode == 'n')
+        // {
+        //     system("cls | clear");
+        //     main();
+        // }
+        // else
+        // {
+        //     break;
+        // }
+    // } while (pengulangan < 1);
 }
 
 void tampilkan_data_mhs(mahasiswa mhs)
@@ -130,12 +132,13 @@ void tampilkan_data_mhs(mahasiswa mhs)
         }
         if (strcmp(mhs.NIM, data) == 0)
         {
-            printf("\n| DATA MAHASISWA\n");
-            printf("| NIM       : %s\n", mhs.NIM);
-            printf("| Nama      : %s\n", mhs.nama);
+                printf("\n| DATA MAHASISWA\n");
+                printf("| NIM       : %s\n", mhs.NIM);
+                printf("| Nama      : %s\n", mhs.nama);
         }
-        fclose(in);
     }
+
+    fclose(in);
     mengulang(mhs);
 }
 
@@ -154,7 +157,7 @@ int validation2()
         printf("|  TIDAK SESUAI PILIHAN !\n");
         printf("+------------------------------+\n");
         printf("| MASUKAN ULANG : ");
-        return validation2(pilih_jenis);
+        return validation2();
     }
     else if (pilih_jenis < 1 || pilih_jenis > 3)
     {
@@ -162,7 +165,39 @@ int validation2()
         printf("| TIDAK SESUAI PILIHAN !\n");
         printf("+------------------------------+\n");
         printf("| MASUKAN ULANG : ");
-        return validation2(pilih_jenis);
+        return validation2();
+        printf("\n===============================================\n");
+    }
+    else
+    {
+        return pilih_jenis;
+    }
+    return 0;
+}
+
+int validation3(){
+    int pilih_jenis;
+    char check;
+
+    if (scanf("%i%c", &pilih_jenis, &check) != 2 || check != '\n')
+    {
+        while ((check = getchar()) != '\n' && check != EOF)
+        {
+        }; // input buffer
+
+        printf("+------------------------------+\n");
+        printf("|  TIDAK SESUAI PILIHAN !\n");
+        printf("+------------------------------+\n");
+        printf("| MASUKAN ULANG : ");
+        return validation3();
+    }
+    else if (pilih_jenis < 1 || pilih_jenis > 3)
+    {
+        printf("+------------------------------+\n");
+        printf("| TIDAK SESUAI PILIHAN !\n");
+        printf("+------------------------------+\n");
+        printf("| MASUKAN ULANG : ");
+        return validation3();
         printf("\n===============================================\n");
     }
     else
