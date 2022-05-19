@@ -23,7 +23,7 @@ struct pegawai{
 }karyawan;
 
 int main(){
-    system ("color F0");
+	system ("color F0");
     intro();
     input_data();
     hasil();
@@ -77,15 +77,15 @@ void input_data(){
 
 void input_jam(){
     reVldInt(&karyawan.jam, "\t\t\t\tInputkan Jam Kerja\t: ");
-    if(karyawan.jam>24){
-        printf("\t\t\t\tMaksimal jam kerja adalah 24 jam per hari!\n");
+    if(karyawan.jam>15){
+        printf("\t\t\t\tMaksimal jam kerja adalah 15 jam per hari!\n");
         input_jam();
     }else if(karyawan.jam<1){
         printf("\t\t\t\tJam kerja minimal adalah 1 jam!\n");
         input_jam();
     }
 
-    if(karyawan.jam > 8 && karyawan.jam <= 24){
+    if(karyawan.jam > 8 && karyawan.jam <= 15){
         karyawan.jam_kantor = karyawan.jam;
         karyawan.jam_lembur = karyawan.jam - 8;
         karyawan.jam_kantor = karyawan.jam - karyawan.jam_lembur;
