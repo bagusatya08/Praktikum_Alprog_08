@@ -84,7 +84,6 @@ void enkripsi(char input_enkripsi[], int jumlah_pergeseran){
             }
             input_enkripsi[i] = toupper(karakter);
         } else if (karakter >= 'A' && karakter <= 'Z'){
-            if (karakter >= 'A' && karakter <= 'Z'){
                 karakter = karakter + (jumlah_pergeseran % 26);
                 if (karakter > 'Z'){
                     karakter = karakter - 'Z' + 'A' - 1;
@@ -93,7 +92,6 @@ void enkripsi(char input_enkripsi[], int jumlah_pergeseran){
             }
         }
     }
-}
 
 void dekripsi(char input_dekripsi[], int jumlah_pergeseran){
     char karakter;

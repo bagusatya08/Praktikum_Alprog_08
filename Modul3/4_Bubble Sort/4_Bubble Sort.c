@@ -25,7 +25,7 @@ int main(){
     printf("| 2. 16000 DATA                |\n");
     printf("| 3. 64000 DATA                |\n");
     printf("+------------------------------+\n");
-    printf("| MASUKAN PILIHAN SORTING   : ");
+    printf("| MASUKAN PILIHAN BANYAK DATA   : ");
     banyak_data = validation(banyak_data);
     printf("+------------------------------+\n");
 
