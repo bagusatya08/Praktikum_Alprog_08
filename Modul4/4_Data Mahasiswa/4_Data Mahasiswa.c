@@ -12,7 +12,7 @@ typedef struct
 void input_data_mhs(mahasiswa mhs);
 void tampilkan_data_mhs(mahasiswa mhs);
 int validation2();
-int validation3();
+int validation3(mahasiswa mhs);
 void mengulang(mahasiswa mhs);
 
 int main()
@@ -52,8 +52,7 @@ void input_data_mhs(mahasiswa mhs)
     int pengulangan;
     char kode, y, n;
     pengulangan = 0;
-    // do
-    // {
+    
         string induk, name;
         printf("\n+------------------------------+");
         printf("\n| MASUKKAN DATA MAHASISWA\n");
@@ -89,24 +88,7 @@ void input_data_mhs(mahasiswa mhs)
             fclose(in);
         }
 
-        printf("+------------------------------+\n");
-        printf("\n| KEMBALI MENGINPUT DATA (y/n):");
-        validation3();
-        // scanf("%s", &kode);
-        // if (kode == 'y')
-        // {
-        //     system("cls | clear");
-        // }
-        // else if (kode == 'n')
-        // {
-        //     system("cls | clear");
-        //     main();
-        // }
-        // else
-        // {
-        //     break;
-        // }
-    // } while (pengulangan < 1);
+        validation3(mhs);
 }
 
 void tampilkan_data_mhs(mahasiswa mhs)
@@ -129,12 +111,13 @@ void tampilkan_data_mhs(mahasiswa mhs)
         {
             fflush(stdin);
             fscanf(in, "%s # %[^\n]s #\n", mhs.NIM, mhs.nama);
-        }
-        if (strcmp(mhs.NIM, data) == 0)
-        {
+            if (strcmp(mhs.NIM, data) == 0)
+            {
                 printf("\n| DATA MAHASISWA\n");
                 printf("| NIM       : %s\n", mhs.NIM);
                 printf("| Nama      : %s\n", mhs.nama);
+            }
+
         }
     }
 
@@ -175,34 +158,31 @@ int validation2()
     return 0;
 }
 
-int validation3(){
-    int pilih_jenis;
+int validation3(mahasiswa mhs){
+
+    char ulang[10];
     char check;
 
-    if (scanf("%i%c", &pilih_jenis, &check) != 2 || check != '\n')
+    printf("+------------------------------+\n");
+    printf("\n| KEMBALI MENGINPUT DATA (y/t):");
+    scanf("%s", ulang);
+    while ((check = getchar()) != '\n' && check != EOF)
     {
-        while ((check = getchar()) != '\n' && check != EOF)
-        {
-        }; // input buffer
-
-        printf("+------------------------------+\n");
-        printf("|  TIDAK SESUAI PILIHAN !\n");
-        printf("+------------------------------+\n");
-        printf("| MASUKAN ULANG : ");
-        return validation3();
+    }; // input buffer
+    
+    if (strcmp(ulang, "y") == 0 || strcmp(ulang, "Y") == 0)
+    {
+        input_data_mhs(mhs);
     }
-    else if (pilih_jenis < 1 || pilih_jenis > 3)
+    else if (strcmp(ulang, "t") == 0 || strcmp(ulang, "T") == 0)
     {
-        printf("+------------------------------+\n");
-        printf("| TIDAK SESUAI PILIHAN !\n");
-        printf("+------------------------------+\n");
-        printf("| MASUKAN ULANG : ");
-        return validation3();
-        printf("\n===============================================\n");
+        system("cls || clear");
+        main();
     }
     else
     {
-        return pilih_jenis;
+        
+        validation3(mhs);
     }
     return 0;
 }
